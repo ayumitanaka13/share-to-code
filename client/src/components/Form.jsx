@@ -53,101 +53,103 @@ const Form = ({ currentId, setCurrentId }) => {
   };
 
   return (
-    <Card>
-      <form onSubmit={handleSubmit}>
-        <CardHeader color="lightBlue" size="lg">
-          <H5 color="white">{currentId ? "Editing" : "Creating"} Post</H5>
-        </CardHeader>
+    <div className="mt-8">
+      <Card>
+        <form onSubmit={handleSubmit}>
+          <CardHeader color="lightBlue" size="lg">
+            <H5 color="white">{currentId ? "Editing" : "Creating"} Post</H5>
+          </CardHeader>
 
-        <CardBody>
-          <div className="mt-4 mb-8 px-4">
-            <InputIcon
-              name="creator"
-              value={postData.creator}
-              onChange={(e) =>
-                setPostData({ ...postData, creator: e.target.value })
-              }
-              type="text"
-              color="lightBlue"
-              placeholder="Creator"
-              iconName="account_circle"
-            />
-          </div>
-          <div className="mb-8 px-4">
-            <InputIcon
-              name="title"
-              value={postData.title}
-              onChange={(e) =>
-                setPostData({ ...postData, title: e.target.value })
-              }
-              type="text"
-              color="lightBlue"
-              placeholder="Title"
-              iconName="email"
-            />
-          </div>
-          <div className="mb-8 px-4">
-            <InputIcon
-              name="message"
-              value={postData.message}
-              onChange={(e) =>
-                setPostData({ ...postData, message: e.target.value })
-              }
-              type="text"
-              color="lightBlue"
-              placeholder="Message"
-              iconName="email"
-            />
-          </div>
-          <div className="mb-8 px-4">
-            <InputIcon
-              name="tags"
-              value={postData.tags}
-              onChange={(e) =>
-                setPostData({ ...postData, tags: e.target.value.split(",") })
-              }
-              type="text"
-              color="lightBlue"
-              placeholder="Tags (coma separated)"
-              iconName="lock"
-            />
-          </div>
-          <div className="mb-4 px-4">
-            <FileBase
-              type="file"
-              multiple={false}
-              onDone={({ base64 }) =>
-                setPostData({ ...postData, selectedFile: base64 })
-              }
-            />
-          </div>
-        </CardBody>
-        <CardFooter>
-          <div className="flex justify-center">
-            <Button
-              type="submit"
-              // onClick={handleSubmit}
-              color="lightBlue"
-              buttonType="link"
-              size="lg"
-              ripple="dark"
-            >
-              Submit
-            </Button>
-            <Button
-              type="button"
-              onClick={handleClear}
-              color="lightBlue"
-              buttonType="link"
-              size="lg"
-              ripple="dark"
-            >
-              Clear
-            </Button>
-          </div>
-        </CardFooter>
-      </form>
-    </Card>
+          <CardBody>
+            <div className="mt-4 mb-8 px-4">
+              <InputIcon
+                name="creator"
+                value={postData.creator}
+                onChange={(e) =>
+                  setPostData({ ...postData, creator: e.target.value })
+                }
+                type="text"
+                color="lightBlue"
+                placeholder="Creator"
+                iconName="account_circle"
+              />
+            </div>
+            <div className="mb-8 px-4">
+              <InputIcon
+                name="title"
+                value={postData.title}
+                onChange={(e) =>
+                  setPostData({ ...postData, title: e.target.value })
+                }
+                type="text"
+                color="lightBlue"
+                placeholder="Title"
+                iconName="email"
+              />
+            </div>
+            <div className="mb-8 px-4">
+              <InputIcon
+                name="message"
+                value={postData.message}
+                onChange={(e) =>
+                  setPostData({ ...postData, message: e.target.value })
+                }
+                type="text"
+                color="lightBlue"
+                placeholder="Message"
+                iconName="email"
+              />
+            </div>
+            <div className="mb-8 px-4">
+              <InputIcon
+                name="tags"
+                value={postData.tags}
+                onChange={(e) =>
+                  setPostData({ ...postData, tags: e.target.value.split(",") })
+                }
+                type="text"
+                color="lightBlue"
+                placeholder="Tags (coma separated)"
+                iconName="lock"
+              />
+            </div>
+            <div className="mb-4 px-4">
+              <FileBase
+                type="file"
+                multiple={false}
+                onDone={({ base64 }) =>
+                  setPostData({ ...postData, selectedFile: base64 })
+                }
+              />
+            </div>
+          </CardBody>
+          <CardFooter>
+            <div className="flex justify-center">
+              <Button
+                type="submit"
+                // onClick={handleSubmit}
+                color="lightBlue"
+                buttonType="link"
+                size="lg"
+                ripple="dark"
+              >
+                Submit
+              </Button>
+              <Button
+                type="button"
+                onClick={handleClear}
+                color="lightBlue"
+                buttonType="link"
+                size="lg"
+                ripple="dark"
+              >
+                Clear
+              </Button>
+            </div>
+          </CardFooter>
+        </form>
+      </Card>
+    </div>
   );
 };
 

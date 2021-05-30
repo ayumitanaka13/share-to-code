@@ -18,10 +18,14 @@ const App = () => {
   }, [currentId, dispatch]);
 
   return (
-    <div className="App">
+    <div className="min-h-screen w-screen bg-gray-200">
       <NavBar />
-      <Posts setCurrentId={setCurrentId} />
-      <Form currentId={currentId} setCurrentId={setCurrentId} />
+      <div className="min-h-full w-full flex justify-center py-16 bg-gray-300">
+        <div className="w-5/6 lg:w-2/3 border-8">
+          <Posts setCurrentId={setCurrentId} />
+          <Form currentId={currentId} setCurrentId={setCurrentId} />
+        </div>
+      </div>
     </div>
   );
 };

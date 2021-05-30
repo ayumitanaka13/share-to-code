@@ -9,10 +9,10 @@ const Posts = ({ setCurrentId }) => {
   return !posts.length ? (
     <>progress...</>
   ) : (
-    <div>
-      <h1>Posts</h1>
-      {posts.map((post) => (
-        <div key={post.id}>
+    <div className="w-full flex flex-wrap border-4">
+      {posts.map((post, i) => (
+        <div key={i} className="w-1/3 p-2 md:p-4 border">
+          {/* <div key={post.id} className="border"> */}
           <Post post={post} setCurrentId={setCurrentId} />
         </div>
       ))}

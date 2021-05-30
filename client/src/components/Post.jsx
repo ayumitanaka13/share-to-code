@@ -25,7 +25,6 @@ const Post = ({ post, setCurrentId }) => {
         }
         alt={post.title}
       />
-
       <CardBody>
         <H6 color="gray">{post.title}</H6>
         <Paragraph color="gray">{post.message}</Paragraph>
@@ -33,12 +32,7 @@ const Post = ({ post, setCurrentId }) => {
         <p>{moment(post.createdAt).fromNow()}</p>
       </CardBody>
 
-      <CardFooter>
-        <Button>{post.tags.map((tag) => `#${tag}`)}</Button>
-      </CardFooter>
-
-
-      <CardFooter>
+      <CardFooter className="flex">
         <Button
           color="lightBlue"
           size="lg"
@@ -63,6 +57,10 @@ const Post = ({ post, setCurrentId }) => {
         >
           delete
         </Button>
+      </CardFooter>
+
+      <CardFooter>
+        <Button>{post.tags.map((tag) => `#${tag}`)}</Button>
       </CardFooter>
     </Card>
   );

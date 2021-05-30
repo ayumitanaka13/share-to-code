@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-// import "@material-tailwind/react/tailwind.css";
 import Navbar from "@material-tailwind/react/Navbar";
 import NavbarContainer from "@material-tailwind/react/NavbarContainer";
 import NavbarWrapper from "@material-tailwind/react/NavbarWrapper";
@@ -20,7 +19,9 @@ const NavBar = () => {
     <Navbar color="blueGray" navbar>
       <NavbarContainer>
         <NavbarWrapper>
-          <NavbarBrand>Navbar</NavbarBrand>
+          <NavbarBrand>
+            <span>Share to CODE</span>
+          </NavbarBrand>
           <NavbarToggler
             color="white"
             onClick={() => setOpenNavbar(!openNavbar)}
@@ -30,20 +31,21 @@ const NavBar = () => {
 
         <NavbarCollapse open={openNavbar}>
           <Nav leftSide>
-            <NavItem active="light" ripple="light">
+            <NavItem ripple="light">
+              {/* <NavItem active="light" ripple="light"> */}
               <Icon name="language" size="xl" />
-              Discover
+              <span>Discover</span>
             </NavItem>
             <NavLink href="#navbar" ripple="light">
               <Icon name="account_circle" size="xl" />
-              Profile
+              <span>Log In</span>
             </NavLink>
             <NavItem ripple="light">
               <Icon name="settings" size="xl" />
-              Settings
+              <span>Sign Up</span>
             </NavItem>
           </Nav>
-          <NavbarInput type="text" placeholder="Search here" />
+          <NavbarInput type="text" placeholder="Search" />
         </NavbarCollapse>
       </NavbarContainer>
     </Navbar>

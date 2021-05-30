@@ -33,9 +33,13 @@
   li {
     @apply text-xs sm:text-sm xl:text-base;
   }
+  span {
+    @apply normal-case;
+  }
   button {
     @apply cursor-pointer focus:outline-none;
   }
 }
 
-@layer components {}
+@layer components {
+}
