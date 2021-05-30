@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* body {
+    @apply text-white bg-green-500;
+  } */
+  h1 {
+    @apply text-6xl sm:text-8xl xl:text-9xl text-transparent text-center;
+  }
+  h2 {
+    @apply text-3xl sm:text-4xl xl:text-6xl text-transparent text-center;
+  }
+  h3 {
+    @apply text-2xl sm:text-3xl xl:text-5xl text-transparent text-center;
+  }
+  h4 {
+    @apply text-xl sm:text-2xl xl:text-3xl;
+  }
+  h5 {
+    @apply text-lg sm:text-xl xl:text-2xl;
+  }
+  h6 {
+    @apply text-base sm:text-lg xl:text-xl;
+  }
+  p {
+    @apply text-sm sm:text-base xl:text-lg;
+  }
+  small {
+    @apply text-xs sm:text-sm xl:text-base;
+  }
+  li {
+    @apply text-xs sm:text-sm xl:text-base;
+  }
+  button {
+    @apply cursor-pointer focus:outline-none;
+  }
+}
+
+@layer components {}
