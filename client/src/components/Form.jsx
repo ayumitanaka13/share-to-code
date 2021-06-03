@@ -55,7 +55,7 @@ const Form = ({ currentId, setCurrentId }) => {
     handleClear();
   };
 
-  if (!user?.result?.username) {
+  if (!user?.result) {
     return <p>Please Sign in</p>;
   }
 
