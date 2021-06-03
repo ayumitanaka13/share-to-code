@@ -14,7 +14,7 @@ import H5 from "@material-tailwind/react/Heading5";
 
 const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
-    creator: "",
+    // creator: "",
     title: "",
     message: "",
     tags: "",
@@ -24,6 +24,7 @@ const Form = ({ currentId, setCurrentId }) => {
   const post = useSelector((state) =>
     currentId ? state.posts.find((message) => message._id === currentId) : null
   );
+  const user = JSON.parse(localStorage.getItem("profile"));
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,7 +34,7 @@ const Form = ({ currentId, setCurrentId }) => {
   const handleClear = () => {
     setCurrentId(0);
     setPostData({
-      creator: "",
+      // creator: "",
       title: "",
       message: "",
       tags: "",
@@ -45,12 +46,18 @@ const Form = ({ currentId, setCurrentId }) => {
     e.preventDefault();
 
     if (currentId === 0) {
-      dispatch(createPost(postData));
+      dispatch(createPost({ ...postData, username: user?.result?.username }));
     } else {
-      dispatch(updatePost(currentId, postData));
+      dispatch(
+        updatePost(currentId, { ...postData, username: user?.result?.username })
+      );
     }
     handleClear();
   };
+
+  if (!user?.result?.username) {
+    return <p>Please Sign in</p>;
+  }
 
   return (
     <div className="mt-8">
@@ -61,7 +68,7 @@ const Form = ({ currentId, setCurrentId }) => {
           </CardHeader>
 
           <CardBody>
-            <div className="mt-4 mb-8 px-4">
+            {/* <div className="mt-4 mb-8 px-4">
               <InputIcon
                 name="creator"
                 value={postData.creator}
@@ -73,8 +80,8 @@ const Form = ({ currentId, setCurrentId }) => {
                 placeholder="Creator"
                 iconName="account_circle"
               />
-            </div>
-            <div className="mb-8 px-4">
+            </div> */}
+            <div className="mt-4 mb-8 px-4">
               <InputIcon
                 name="title"
                 value={postData.title}

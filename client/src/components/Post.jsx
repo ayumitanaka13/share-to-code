@@ -15,6 +15,27 @@ import Button from "@material-tailwind/react/Button";
 
 const Post = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
+  const user = JSON.parse(localStorage.getItem("profile"));
+
+  const Likes = () => {
+    if (post.likes.length > 0) {
+      return post.likes.find(
+        (like) => like === (user?.result?.googleId || user?.result?._id)
+      ) ? (
+        <>
+          {post.likes.length > 2
+            ? `You and ${post.likes.length - 1} others`
+            : `${post.likes.length} like ${post.likes.length > 1 ? "s" : ""}`}
+        </>
+      ) : (
+        <>
+          {post.likes.length} {post.likes.length === 1 ? "Like" : "Likes"}
+        </>
+      );
+    }
+
+    return <>Like </>;
+  };
 
   return (
     <Card>
@@ -28,35 +49,43 @@ const Post = ({ post, setCurrentId }) => {
       <CardBody>
         <H6 color="gray">{post.title}</H6>
         <Paragraph color="gray">{post.message}</Paragraph>
-        <p>{post.creator}</p>
+        <p>{post.username}</p>
         <p>{moment(post.createdAt).fromNow()}</p>
       </CardBody>
 
       <CardFooter className="flex">
+        {(user?.result?.googleId === post?.creator ||
+          user?.result?._id === post?.creator) && (
+          <Button
+            color="lightBlue"
+            size="lg"
+            ripple="light"
+            onClick={() => setCurrentId(post._id)}
+          >
+            Edit
+          </Button>
+        )}
         <Button
           color="lightBlue"
           size="lg"
           ripple="light"
-          onClick={() => setCurrentId(post._id)}
-        >
-          Edit?
-        </Button>
-        <Button
-          color="lightBlue"
-          size="lg"
-          ripple="light"
+          disabled={!user?.result}
           onClick={() => dispatch(likePost(post._id))}
         >
-          Like {post.likeCount}
+          <Likes />
         </Button>
-        <Button
-          color="lightBlue"
-          size="lg"
-          ripple="light"
-          onClick={() => dispatch(deletePost(post._id))}
-        >
-          delete
-        </Button>
+
+        {(user?.result?.googleId === post?.creator ||
+          user?.result?._id === post?.creator) && (
+          <Button
+            color="lightBlue"
+            size="lg"
+            ripple="light"
+            onClick={() => dispatch(deletePost(post._id))}
+          >
+            delete
+          </Button>
+        )}
       </CardFooter>
 
       <CardFooter>
