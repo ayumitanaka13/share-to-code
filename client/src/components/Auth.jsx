@@ -30,7 +30,7 @@ const Auth = () => {
   const history = useHistory();
 
   const [showPassword, setShowPassword] = useState(false);
-  //   const handleShowPassword = () => setShowPassword(!showPassword);
+    // const handleShowPassword = () => setShowPassword(!showPassword);
 
   const switchMode = () => {
     setForm(initialState);
@@ -57,11 +57,10 @@ const Auth = () => {
     } catch (error) {
       console.log(error);
     }
-    // console.log(res);
   };
 
   const googleFailure = () => {
-    alert("Google Sign In was unsuccessful.");
+    console.log("Google Sign In was unsuccessful.");
   };
 
   const handleChange = (e) => {
@@ -71,11 +70,10 @@ const Auth = () => {
   return (
     <Container>
       <Card>
-        <form onSubmit={handleSubmit}>
           <CardHeader color="lightBlue" size="lg">
             <H5 color="white">{isSignup ? "Sign Up" : "Sign In"}</H5>
           </CardHeader>
-
+        <form onSubmit={handleSubmit}>
           <CardBody>
             <div className="mt-4 mb-8 px-4">
               <InputIcon

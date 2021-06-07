@@ -2,7 +2,8 @@ import express from "express";
 
 import {
   getPosts,
-  // getPost,
+  getPost,
+  getPostsBySearch,
   createPost,
   updatePost,
   likePost,
@@ -14,8 +15,9 @@ import auth from "../middleware/auth.js";
 const router = express.Router();
 
 router.get("/", getPosts);
+router.get("/:id", getPost);
+router.get("/search", getPostsBySearch);
 router.post("/", auth, createPost);
-// router.get("/:id", getPost);
 // patch - a method to partially update a resource
 router.patch("/:id", auth, updatePost);
 router.delete("/:id", auth, deletePost);

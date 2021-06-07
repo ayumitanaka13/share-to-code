@@ -6,10 +6,24 @@ import PostMessage from "../models/postMessage.js";
 const router = express.Router();
 
 export const getPosts = async (req, res) => {
+  const { page } = req.query;
+
   try {
-    const postMessages = await PostMessage.find();
-    // 200 - OK
-    res.status(200).json(postMessages);
+    const LIMIT = 4;
+    // get the starting index of every page
+    const startIndex = (Number(page) - 1) * LIMIT;
+    const total = await PostMessage.countDocuments({});
+
+    const posts = await PostMessage.find()
+      .sort({ _id: -1 })
+      .limit(LIMIT)
+      .skip(startIndex);
+
+    res.json({
+      data: posts,
+      currentPage: Number(page),
+      numberOfPages: Math.ceil(total / LIMIT),
+    });
   } catch (error) {
     // 404 - not found
     res.status(404).json({ message: error.message });
@@ -21,7 +35,22 @@ export const getPost = async (req, res) => {
 
   try {
     const post = await PostMessage.findById(id);
+    // 200 - OK
     res.status(200).json(post);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
+export const getPostsBySearch = async (req, res) => {
+  const { searchQuery, tags } = req.query;
+
+  try {
+    const title = new RegExp(searchQuery, "i");
+    const posts = await PostMessage.find({
+      $or: [{ title }, { tags: { $in: tags.split(",") } }],
+    });
+    res.json({ data: posts });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
@@ -32,6 +61,7 @@ export const createPost = async (req, res) => {
   const newPostMessage = new PostMessage({
     ...post,
     creator: req.userId,
+    // toISOString - returns a string in simplified extended ISO format
     createdAt: new Date().toISOString(),
   });
 
@@ -47,7 +77,7 @@ export const createPost = async (req, res) => {
 
 export const updatePost = async (req, res) => {
   const { id } = req.params;
-  const { title, message, selectedFile, creator, tags } = req.body;
+  const { title, message, creator, selectedFile, tags } = req.body;
 
   // if there is no post id in db
   if (!mongoose.Types.ObjectId.isValid(id))
@@ -89,13 +119,10 @@ export const likePost = async (req, res) => {
     // dislike the post
     post.likes = post.likes.filter((id) => id !== String(req.userId));
   }
-  const updatedPost = await PostMessage.findByIdAndUpdate(
-    id,
-    post,
-    // { likeCount: post.likeCount + 1 },
-    { new: true }
-  );
-  res.json(updatedPost);
+  const updatedPost = await PostMessage.findByIdAndUpdate(id, post, {
+    new: true,
+  });
+  res.status(200).json(updatedPost);
 };
 
 export default router;
