@@ -75,10 +75,7 @@ const PostDetails = () => {
               </div>
             </div>
             <CardBody>
-              <H6 color="gray">{post.title}</H6>
               <Paragraph color="gray">{post.message}</Paragraph>
-              <p>{post.username}</p>
-              <p>{moment(post.createdAt).fromNow()}</p>
             </CardBody>
 
             <CardFooter>
@@ -114,12 +111,22 @@ const PostDetails = () => {
               >
                 <img src={thumbnail} alt="" />
               </CardHeader> */}
-              <CardHeader color="lightBlue" size="lg" iconOnly className="CardHeader">
-                <Icon name="groups" size="5xl" color="white" />
+              <CardHeader
+                color="lightBlue"
+                size="md"
+                iconOnly
+                className="CardHeader"
+              >
+                <Icon name="person" size="5xl" color="white" />
               </CardHeader>
-              {/* <Button></Button> */}
-
-              <CardStatus title="Users" amount="350,000" />
+              <CardStatus
+                title={moment(post.createdAt).fromNow()}
+                amount={post.username}
+              />
+              {/* <div className="text-right m-auto border">
+                <p>{post.username}</p>
+                <p>{moment(post.createdAt).fromNow()}</p>
+              </div> */}
             </CardRow>
 
             <CardStatusFooter color="green" amount="97%" date="Since one week">
