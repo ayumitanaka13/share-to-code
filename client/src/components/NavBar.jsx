@@ -49,8 +49,8 @@ const NavBar = () => {
   }, [location]);
 
   const searchPost = () => {
-    if (search.trim()) {
-      dispatch(getPostsBySearch({ search, tags: tags.join(".") }));
+    if (search.trim() || tags) {
+      dispatch(getPostsBySearch({ search, tags: tags.join(",") }));
       history.push(
         `/posts/search?searchQuery=${search || "none"}&tags=${tags.join(",")}`
       );
@@ -59,19 +59,19 @@ const NavBar = () => {
     }
   };
 
-  const handleAdd = (tag) => setTags([...tags, tag]);
-
-  const handleDelete = (tagToDelete) =>
-    setTags(tags.filter((tag) => tag !== tagToDelete));
-
   const handleKeyPress = (e) => {
     if (e.keyCode === 13) {
       searchPost();
     }
   };
 
+  const handleAddChip = (tag) => setTags([...tags, tag]);
+
+  const handleDeleteChip = (chipToDelete) =>
+    setTags(tags.filter((tag) => tag !== chipToDelete));
+
   return (
-    <Navbar color="blueGray" navbar>
+    <Navbar color="blueGray" navbar className="bg-transparent">
       <NavbarContainer>
         <NavbarWrapper>
           <NavbarBrand>
@@ -96,7 +96,7 @@ const NavBar = () => {
             {user?.result ? (
               <>
                 <NavItem ripple="light">
-                  <Icon name="account_circle" size="xl" />
+                  <Icon name="post_add" size="xl" />
                   <Link to="/auth">
                     <span>Post</span>
                   </Link>
@@ -105,10 +105,22 @@ const NavBar = () => {
                   <Icon name="account_circle" size="xl" />
                   <span onClick={logout}>Logout</span>
                 </NavItem>
-                <div className="flex">
-                  <img src={user?.result.imageUrl} alt={user?.result.name} />
-                  <p>{user?.result.name}</p>
-                </div>
+                <NavItem ripple="light">
+                  {user.result.imageUrl ? (
+                    <img
+                      src={user?.result.imageUrl}
+                      alt={user?.result.name}
+                      className="w-6 rounded-full border-2 border-gray-300 mr-2"
+                    />
+                  ) : null}
+
+                  <span>
+                    Welcome,{" "}
+                    {user.result.name
+                      ? user.result.givenName
+                      : user.result.username}
+                  </span>
+                </NavItem>
               </>
             ) : (
               <>
@@ -118,25 +130,28 @@ const NavBar = () => {
                     <span>Sign In</span>
                   </Link>
                 </NavItem>
-                {/* <NavItem ripple="light">
-                  <Icon name="account_circle" size="xl" />
-                  <Link to="/auth">
-                    <span>Sign Up</span>
-                  </Link>
-                </NavItem> */}
               </>
             )}
           </Nav>
+
           <NavbarInput
             type="text"
-            placeholder="Search"
+            placeholder="Search Posts"
+            name="search"
+            value={search}
+            onKeyDown={handleKeyPress}
             onChange={(e) => {
               setSearch(e.target.value);
             }}
           />
-          <Button onAdd={handleAdd} onDelete={handleDelete} value={tags}>
-            {tags}
-          </Button>
+          <NavbarInput
+            type="text"
+            placeholder="Search Posts by Tags"
+            name="tags"
+            value={tags}
+            onAdd={(chip) => handleAddChip(chip)}
+            onDelete={(chip) => handleDeleteChip(chip)}
+          />
           <Button onClick={searchPost}>Search</Button>
         </NavbarCollapse>
       </NavbarContainer>

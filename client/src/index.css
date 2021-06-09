@@ -4,22 +4,22 @@
 
 @layer base {
   /* body {
-    @apply text-white bg-green-500;
+    @apply text-white;
   } */
   h1 {
-    @apply text-6xl sm:text-8xl xl:text-9xl text-transparent text-center;
+    @apply text-6xl sm:text-8xl xl:text-9xl text-white;
   }
   h2 {
-    @apply text-3xl sm:text-4xl xl:text-6xl text-transparent text-center;
+    @apply text-3xl sm:text-4xl xl:text-6xl;
   }
   h3 {
-    @apply text-2xl sm:text-3xl xl:text-5xl text-transparent text-center;
+    @apply text-2xl sm:text-3xl xl:text-5xl text-white;
   }
   h4 {
     @apply text-xl sm:text-2xl xl:text-3xl;
   }
   h5 {
-    @apply text-lg sm:text-xl xl:text-2xl;
+    @apply text-lg sm:text-xl xl:text-2xl text-white;
   }
   h6 {
     @apply text-base sm:text-lg xl:text-xl;
@@ -27,6 +27,10 @@
   p {
     @apply text-sm sm:text-base xl:text-lg;
   }
+  i {
+    @apply text-white;
+  }
+
   small {
     @apply text-xs sm:text-sm xl:text-base;
   }
@@ -34,7 +38,7 @@
     @apply text-xs sm:text-sm xl:text-base;
   }
   span {
-    @apply normal-case;
+    @apply font-medium normal-case;
   }
   button {
     @apply cursor-pointer focus:outline-none;
@@ -42,4 +46,7 @@
 }
 
 @layer components {
+  .CardHeader {
+    @apply -mt-9 !important;
+  }
 }

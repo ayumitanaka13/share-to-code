@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import FileBase from "react-file-base64";
 
@@ -13,31 +14,36 @@ import Button from "@material-tailwind/react/Button";
 import H5 from "@material-tailwind/react/Heading5";
 
 const Form = ({ currentId, setCurrentId }) => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
   const [postData, setPostData] = useState({
-    // creator: "",
     title: "",
     message: "",
-    tags: "",
+    tags: [],
     selectedFile: "",
   });
 
   const post = useSelector((state) =>
-    currentId ? state.posts.find((message) => message._id === currentId) : null
+    currentId
+      ? state.posts.posts.find((message) => message._id === currentId)
+      : null
   );
   const user = JSON.parse(localStorage.getItem("profile"));
-  const dispatch = useDispatch();
 
   useEffect(() => {
+    if (!post?.title) {
+      handleClear();
+    }
     if (post) setPostData(post);
   }, [post]);
 
   const handleClear = () => {
     setCurrentId(0);
     setPostData({
-      // creator: "",
       title: "",
       message: "",
-      tags: "",
+      tags: [],
       selectedFile: "",
     });
   };
@@ -46,10 +52,25 @@ const Form = ({ currentId, setCurrentId }) => {
     e.preventDefault();
 
     if (currentId === 0) {
-      dispatch(createPost({ ...postData, username: user?.result?.username }));
+      dispatch(
+        createPost(
+          {
+            ...postData,
+            username: user?.result?.username || user?.result?.givenName,
+            userImg: user?.result?.imageUrl
+          },
+          history
+        )
+      );
+      handleClear();
+      // history.push("/");
     } else {
       dispatch(
-        updatePost(currentId, { ...postData, username: user?.result?.username })
+        updatePost(currentId, {
+          ...postData,
+          username: user?.result?.username || user?.result?.givenName,
+          userImg: user?.result?.imageUrl
+        })
       );
     }
     handleClear();
@@ -58,6 +79,17 @@ const Form = ({ currentId, setCurrentId }) => {
   if (!user?.result) {
     return <p>Please Sign in</p>;
   }
+
+  const handleAddChip = (tag) => {
+    setPostData({ ...postData, tags: [...postData.tags, tag] });
+  };
+
+  const handleDeleteChip = (chipToDelete) => {
+    setPostData({
+      ...postData,
+      tags: postData.tags.filter((tag) => tag !== chipToDelete),
+    });
+  };
 
   return (
     <div className="mt-8">
@@ -68,19 +100,6 @@ const Form = ({ currentId, setCurrentId }) => {
           </CardHeader>
 
           <CardBody>
-            {/* <div className="mt-4 mb-8 px-4">
-              <InputIcon
-                name="creator"
-                value={postData.creator}
-                onChange={(e) =>
-                  setPostData({ ...postData, creator: e.target.value })
-                }
-                type="text"
-                color="lightBlue"
-                placeholder="Creator"
-                iconName="account_circle"
-              />
-            </div> */}
             <div className="mt-4 mb-8 px-4">
               <InputIcon
                 name="title"
@@ -91,7 +110,7 @@ const Form = ({ currentId, setCurrentId }) => {
                 type="text"
                 color="lightBlue"
                 placeholder="Title"
-                iconName="email"
+                iconName="title"
               />
             </div>
             <div className="mb-8 px-4">
@@ -104,20 +123,19 @@ const Form = ({ currentId, setCurrentId }) => {
                 type="text"
                 color="lightBlue"
                 placeholder="Message"
-                iconName="email"
+                iconName="message"
               />
             </div>
             <div className="mb-8 px-4">
               <InputIcon
                 name="tags"
                 value={postData.tags}
-                onChange={(e) =>
-                  setPostData({ ...postData, tags: e.target.value.split(",") })
-                }
-                type="text"
+                onAdd={(chip) => handleAddChip(chip)}
+                onDelete={(chip) => handleDeleteChip(chip)}
+                // type="text"
                 color="lightBlue"
                 placeholder="Tags (coma separated)"
-                iconName="lock"
+                iconName="more"
               />
             </div>
             <div className="mb-4 px-4">
@@ -134,7 +152,6 @@ const Form = ({ currentId, setCurrentId }) => {
             <div className="flex justify-center">
               <Button
                 type="submit"
-                // onClick={handleSubmit}
                 color="lightBlue"
                 buttonType="link"
                 size="lg"
