@@ -20,9 +20,18 @@ const Form = ({ currentId, setCurrentId }) => {
   const [postData, setPostData] = useState({
     title: "",
     message: "",
-    tags: [],
-    selectedFile: "",
+    theme: "",
+    materials: [],
+    // materials: {
+    //   first: "",
+    //   second: "",
+    //   third: "",
+    // },
+    // tags: [],
+    // selectedFile: "",
   });
+
+  const [addVideo, setAddVideo] = useState(false);
 
   const post = useSelector((state) =>
     currentId
@@ -43,8 +52,15 @@ const Form = ({ currentId, setCurrentId }) => {
     setPostData({
       title: "",
       message: "",
-      tags: [],
-      selectedFile: "",
+      theme: "",
+      materials: [],
+      // materials: {
+      //   first: "",
+      //   second: "",
+      //   third: "",
+      // },
+      // tags: [],
+      // selectedFile: "",
     });
   };
 
@@ -57,7 +73,7 @@ const Form = ({ currentId, setCurrentId }) => {
           {
             ...postData,
             username: user?.result?.username || user?.result?.givenName,
-            userImg: user?.result?.imageUrl
+            userImg: user?.result?.imageUrl,
           },
           history
         )
@@ -69,7 +85,7 @@ const Form = ({ currentId, setCurrentId }) => {
         updatePost(currentId, {
           ...postData,
           username: user?.result?.username || user?.result?.givenName,
-          userImg: user?.result?.imageUrl
+          userImg: user?.result?.imageUrl,
         })
       );
     }
@@ -90,6 +106,12 @@ const Form = ({ currentId, setCurrentId }) => {
       tags: postData.tags.filter((tag) => tag !== chipToDelete),
     });
   };
+
+  const handleAddVideo = () => {
+    setAddVideo(!addVideo);
+  };
+
+  console.log(postData.materials);
 
   return (
     <div className="mt-8">
@@ -128,6 +150,57 @@ const Form = ({ currentId, setCurrentId }) => {
             </div>
             <div className="mb-8 px-4">
               <InputIcon
+                name="theme"
+                value={postData.theme}
+                onChange={(e) =>
+                  setPostData({ ...postData, theme: e.target.value })
+                }
+                type="text"
+                color="lightBlue"
+                placeholder="Theme"
+                iconName="more"
+              />
+            </div>
+            <div className={`${addVideo ? "mb-8" : "mb-4"} px-4`}>
+              <InputIcon
+                name="matarials.first"
+                value={postData.materials}
+                onChange={(e) =>
+                  setPostData({
+                    ...postData,
+                    materials: e.target.value,
+                    // matarials: { first: e.target.value },
+                  })
+                }
+                type="text"
+                color="lightBlue"
+                placeholder="First Video"
+                iconName="more"
+              />
+            </div>
+            {addVideo && (
+              <div className={`${addVideo ? "mb-8" : "mb-4"} px-4`}>
+                <InputIcon
+                  name="matarials.first"
+                  value={postData.materials}
+                  onChange={(e) =>
+                    setPostData({
+                      ...postData,
+                      materials: e.target.value,
+                      // matarials: { first: e.target.value },
+                    })
+                  }
+                  type="text"
+                  color="lightBlue"
+                  placeholder="Second Video"
+                  iconName="more"
+                />
+              </div>
+            )}
+            {/* <Button onClick={handleAddVideo}>Add more?</Button> */}
+
+            {/* <div className="mb-8 px-4">
+              <InputIcon
                 name="tags"
                 value={postData.tags}
                 onAdd={(chip) => handleAddChip(chip)}
@@ -146,7 +219,7 @@ const Form = ({ currentId, setCurrentId }) => {
                   setPostData({ ...postData, selectedFile: base64 })
                 }
               />
-            </div>
+            </div> */}
           </CardBody>
           <CardFooter>
             <div className="flex justify-center">

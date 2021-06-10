@@ -116,9 +116,9 @@ const Post = ({ post, setCurrentId }) => {
         )}
       </CardFooter>
 
-      <CardFooter>
+      {/* <CardFooter>
         <Button>{post.tags.map((tag) => `#${tag}`)}</Button>
-      </CardFooter>
+      </CardFooter> */}
     </Card>
   );
 };

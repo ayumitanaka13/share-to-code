@@ -33,13 +33,13 @@ const PostDetails = () => {
     dispatch(getPost(id));
   }, [id]);
 
-  useEffect(() => {
-    if (post) {
-      dispatch(
-        getPostsBySearch({ search: "none", tags: post?.tags.join(",") })
-      );
-    }
-  }, [post]);
+  //   useEffect(() => {
+  //     if (post) {
+  //       dispatch(
+  //         getPostsBySearch({ search: "none", tags: post?.tags.join(",") })
+  //       );
+  //     }
+  //   }, [post]);
 
   if (!post) return null;
 
@@ -76,12 +76,26 @@ const PostDetails = () => {
             </div>
             <CardBody>
               <Paragraph color="gray">{post.message}</Paragraph>
+              {/* <h4>{post.materials[0].split("=")[1]}</h4> */}
+              <iframe
+                width="100%"
+                height="315px"
+                src={`https://www.youtube.com/embed/${
+                  post.materials[0].split("=")[1]
+                }`}
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+              {/* https://www.youtube.com/watch?v=Gucn0CivyjI */}
+              {/* <iframe src={post.materials[0]} frameborder="0"></iframe> */}
+              {/* <iframe src="https://progate.com" frameborder="0"></iframe> */}
+              {/* 🥚🐣🐥🐓 */}
             </CardBody>
-
-            <CardFooter>
+            {/* <CardFooter>
               <Button>{post.tags.map((tag) => `#${tag}`)}</Button>
-            </CardFooter>
-
+            </CardFooter> */}
             {!!recommendedPosts.length && (
               <div>
                 <p>You might also like</p>
@@ -102,36 +116,34 @@ const PostDetails = () => {
         </div>
         <div className="w-full lg:w-1/4 p-2">
           <Card>
-            <CardRow>
-              {/* <CardHeader
-                color="lightBlue"
-                size="lg"
-                iconOnly
-                className="-mt-9 rounded-full"
-              >
-                <img src={thumbnail} alt="" />
-              </CardHeader> */}
-              <CardHeader
+            {/* <CardRow> */}
+            {/* <CardHeader
                 color="lightBlue"
                 size="md"
                 iconOnly
                 className="CardHeader"
-              >
-                <Icon name="person" size="5xl" color="white" />
-              </CardHeader>
-              <CardStatus
-                title={moment(post.createdAt).fromNow()}
-                amount={post.username}
-              />
-              {/* <div className="text-right m-auto border">
+              > */}
+            <CardRow className="items-center justify-between">
+              <Icon name="person" size="6xl" color="lightBlue" />
+              <div>
+                <p>{post.username}</p>
+                <p>{moment(post.createdAt).fromNow()}</p>
+              </div>
+            </CardRow>
+            {/* </CardHeader> */}
+            {/* <CardStatus title={moment(post.createdAt).fromNow()} /> */}
+            {/* <div className="text-right m-auto border">
                 <p>{post.username}</p>
                 <p>{moment(post.createdAt).fromNow()}</p>
               </div> */}
-            </CardRow>
+            {/* </CardRow> */}
 
-            <CardStatusFooter color="green" amount="97%" date="Since one week">
-              <Icon color="green" name="arrow_upward" />
-            </CardStatusFooter>
+            {/* <CardStatusFooter color="green" amount="97%" date="Since one week"> */}
+            <div className="flex items-center justify-between mt-4">
+              {/* <Icon color="green" name="arrow_upward" /> */}
+              <Button>#{post.theme}</Button>
+              <Button>❤︎　{post.likes.length}</Button>
+            </div>
           </Card>
         </div>
       </div>

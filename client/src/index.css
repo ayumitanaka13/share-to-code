@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-  /* body {
-    @apply text-white;
-  } */
+  body {
+    @apply bg-gradient-to-tr from-green-400 to-blue-500;
+  }
   h1 {
     @apply text-6xl sm:text-8xl xl:text-9xl text-white;
   }
