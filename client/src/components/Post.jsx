@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import moment from "moment";
 
 import { getPost, deletePost, likePost } from "../actions/posts";
+import thumbnail from "../images/thumbnail.png";
 
 import Card from "@material-tailwind/react/Card";
 import CardImage from "@material-tailwind/react/CardImage";
@@ -14,6 +15,7 @@ import H6 from "@material-tailwind/react/Heading6";
 import Paragraph from "@material-tailwind/react/Paragraph";
 import Button from "@material-tailwind/react/Button";
 import Icon from "@material-tailwind/react/Icon";
+import CardRow from "@material-tailwind/react/CardRow";
 
 const Post = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
@@ -56,27 +58,29 @@ const Post = ({ post, setCurrentId }) => {
     history.push(`/posts/${post._id}`);
   };
 
-  console.log(user);
-
   return (
     <Card>
-      <CardImage
-        src={
-          post.selectedFile ||
-          "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
-        }
-        alt={post.title}
-      />
+      <div className="relative border-4">
+        <CardImage src={thumbnail} alt={post.title} />
+        <div className="w-full h-full flex items-center justify-center absolute top-0 -mt-4 border">
+          <div className="text-center">
+            <h1>
+              <i className="fab fa-react mb-2" />
+            </h1>
+            <h3>{post.title}</h3>
+          </div>
+        </div>
+      </div>
+
       <CardBody>
-        <H6 color="gray">{post.title}</H6>
-        <Paragraph color="gray">
-          {post.message.split(" ").splice(0, 20).join(" ")}...
-        </Paragraph>
-        <p>{post.username}</p>
-        <p>{moment(post.createdAt).fromNow()}</p>
+        <p>{post.message.split(" ").splice(0, 12).join(" ")}...</p>
+        <div className="flex items-center justify-between mt-2">
+          <p>{post.username}</p>
+          <small>{moment(post.createdAt).fromNow()}</small>
+        </div>
       </CardBody>
 
-      <CardFooter className="flex">
+      <CardFooter className="flex justify-between">
         <Button
           color="lightBlue"
           size="lg"

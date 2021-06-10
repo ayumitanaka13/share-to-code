@@ -16,15 +16,9 @@ const postSchema = mongoose.Schema({
     required: true,
   },
   materials: {
-    type: [String],
-    required: true,
-    // first: {
-    //   type: String,
-    //   required: true,
-    // },
-    // second: String,
-
-    // third: String,
+    first: { type: String },
+    second: { type: String },
+    third: { type: String },
   },
   // tags: [String],
   // selectedFile: String,

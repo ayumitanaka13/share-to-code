@@ -76,12 +76,11 @@ const PostDetails = () => {
             </div>
             <CardBody>
               <Paragraph color="gray">{post.message}</Paragraph>
-              {/* <h4>{post.materials[0].split("=")[1]}</h4> */}
               <iframe
                 width="100%"
                 height="315px"
                 src={`https://www.youtube.com/embed/${
-                  post.materials[0].split("=")[1]
+                  post.materials.first.split("=")[1]
                 }`}
                 title="YouTube video player"
                 frameborder="0"

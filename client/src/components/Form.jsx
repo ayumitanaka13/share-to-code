@@ -21,17 +21,17 @@ const Form = ({ currentId, setCurrentId }) => {
     title: "",
     message: "",
     theme: "",
-    materials: [],
-    // materials: {
-    //   first: "",
-    //   second: "",
-    //   third: "",
-    // },
+    materials: {
+      first: "",
+      second: "",
+      third: "",
+    },
     // tags: [],
     // selectedFile: "",
   });
 
-  const [addVideo, setAddVideo] = useState(false);
+  const [addSecond, setAddSecond] = useState(false);
+  const [addThird, setAddThird] = useState(false);
 
   const post = useSelector((state) =>
     currentId
@@ -53,12 +53,11 @@ const Form = ({ currentId, setCurrentId }) => {
       title: "",
       message: "",
       theme: "",
-      materials: [],
-      // materials: {
-      //   first: "",
-      //   second: "",
-      //   third: "",
-      // },
+      materials: {
+        first: "",
+        second: "",
+        third: "",
+      },
       // tags: [],
       // selectedFile: "",
     });
@@ -107,21 +106,23 @@ const Form = ({ currentId, setCurrentId }) => {
     });
   };
 
-  const handleAddVideo = () => {
-    setAddVideo(!addVideo);
+  const handleAddSecond = () => {
+    setAddSecond(!addSecond);
   };
 
-  console.log(postData.materials);
+  const handleAddThird = () => {
+    setAddThird(!addThird);
+  };
 
   return (
     <div className="mt-8">
       <Card>
         <form onSubmit={handleSubmit}>
           <CardHeader color="lightBlue" size="lg">
-            <H5 color="white">{currentId ? "Editing" : "Creating"} Post</H5>
+            <h4>{currentId ? "Editing" : "Creating"} Post</h4>
           </CardHeader>
-
           <CardBody>
+            <small className="px-4">* required</small>
             <div className="mt-4 mb-8 px-4">
               <InputIcon
                 name="title"
@@ -131,8 +132,9 @@ const Form = ({ currentId, setCurrentId }) => {
                 }
                 type="text"
                 color="lightBlue"
-                placeholder="Title"
+                placeholder="*Title"
                 iconName="title"
+                required
               />
             </div>
             <div className="mb-8 px-4">
@@ -144,8 +146,9 @@ const Form = ({ currentId, setCurrentId }) => {
                 }
                 type="text"
                 color="lightBlue"
-                placeholder="Message"
+                placeholder="*Message"
                 iconName="message"
+                required
               />
             </div>
             <div className="mb-8 px-4">
@@ -157,47 +160,82 @@ const Form = ({ currentId, setCurrentId }) => {
                 }
                 type="text"
                 color="lightBlue"
-                placeholder="Theme"
-                iconName="more"
+                placeholder="*Theme"
+                iconName="code"
+                required
               />
             </div>
-            <div className={`${addVideo ? "mb-8" : "mb-4"} px-4`}>
+            <div className={`${addSecond ? "mb-8" : "mb-4"} px-4`}>
               <InputIcon
                 name="matarials.first"
-                value={postData.materials}
+                defaultValue={postData.materials.first}
                 onChange={(e) =>
                   setPostData({
                     ...postData,
-                    materials: e.target.value,
-                    // matarials: { first: e.target.value },
+                    materials: { ...postData.materials, first: e.target.value },
                   })
                 }
                 type="text"
                 color="lightBlue"
                 placeholder="First Video"
-                iconName="more"
+                iconName="ondemand_video"
               />
             </div>
-            {addVideo && (
-              <div className={`${addVideo ? "mb-8" : "mb-4"} px-4`}>
+            {addSecond && (
+              <div className={`${addThird ? "mb-8" : "mb-4"} px-4`}>
                 <InputIcon
-                  name="matarials.first"
-                  value={postData.materials}
+                  name="matarials.second"
+                  value={postData.materials.second}
                   onChange={(e) =>
                     setPostData({
                       ...postData,
-                      materials: e.target.value,
-                      // matarials: { first: e.target.value },
+                      matarials: {
+                        ...postData.materials,
+                        second: e.target.value,
+                      },
                     })
                   }
                   type="text"
                   color="lightBlue"
                   placeholder="Second Video"
-                  iconName="more"
+                  iconName="ondemand_video"
                 />
               </div>
             )}
-            {/* <Button onClick={handleAddVideo}>Add more?</Button> */}
+
+            {addThird && (
+              <div className="px-4 mb-4">
+                <InputIcon
+                  name="matarials.third"
+                  value={postData.materials.third}
+                  onChange={(e) =>
+                    setPostData({
+                      ...postData,
+                      matarials: {
+                        ...postData.materials,
+                        third: e.target.value,
+                      },
+                    })
+                  }
+                  type="text"
+                  color="lightBlue"
+                  placeholder="Third Video"
+                  iconName="ondemand_video"
+                />
+              </div>
+            )}
+
+            {addSecond ? (
+              addThird ? null : (
+                <div className="px-4">
+                  <Button onClick={handleAddThird}>Add more3?</Button>
+                </div>
+              )
+            ) : (
+              <div className="px-4">
+                <Button onClick={handleAddSecond}>Add more2?</Button>
+              </div>
+            )}
 
             {/* <div className="mb-8 px-4">
               <InputIcon

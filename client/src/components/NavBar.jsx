@@ -88,15 +88,14 @@ const NavBar = () => {
 
         <NavbarCollapse open={openNavbar}>
           <Nav leftSide>
-            <NavItem ripple="light">
-              {/* <NavItem active="light" ripple="light"> */}
+            {/* <NavItem ripple="light">
               <Icon name="language" size="xl" />
               <span>Discover</span>
-            </NavItem>
+            </NavItem> */}
             {user?.result ? (
               <>
                 <NavItem ripple="light">
-                  <Icon name="post_add" size="xl" />
+                  <Icon name="announcement" size="xl" />
                   <Link to="/auth">
                     <span>Post</span>
                   </Link>
@@ -112,8 +111,7 @@ const NavBar = () => {
                       alt={user?.result.name}
                       className="w-6 rounded-full border-2 border-gray-300 mr-2"
                     />
-                  ) : null}
-
+                  ) : null}                 
                   <span>
                     Welcome,{" "}
                     {user.result.name
