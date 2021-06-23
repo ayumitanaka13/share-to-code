@@ -60,7 +60,7 @@ const Post = ({ post, setCurrentId }) => {
 
   return (
     <Card>
-      <div className="relative border-4">
+      <div className="relative border">
         <CardImage src={thumbnail} alt={post.title} />
         <div className="w-full h-full flex items-center justify-center absolute top-0 -mt-4 border">
           <div className="text-center">

@@ -12,9 +12,9 @@ const Posts = ({ setCurrentId }) => {
   return isLoading ? (
     <Progress color="lightBlue" value="50" percentage={false} />
   ) : (
-    <div className="w-full flex flex-wrap border-4">
+    <div className="w-full flex flex-wrap border">
       {posts?.map((post, i) => (
-        <div key={i} className="w-1/2 p-2 md:p-4 border">
+        <div key={i} className="w-full md:w-1/2 p-4 border">
           {/* <div key={post.id} className="border"> */}
           <Post post={post} setCurrentId={setCurrentId} />
         </div>

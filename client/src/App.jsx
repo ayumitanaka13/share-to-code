@@ -13,7 +13,8 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <div className="min-h-screen w-screen bg-gradient-to-tr from-green-400 to-blue-500">
+      <div className="min-h-screen w-screen">
+        {/* <div className="min-h-screen w-screen bg-gradient-to-tr from-green-400 to-blue-500"> */}
         <NavBar />
         <Switch>
           <Route path="/" exact component={() => <Redirect to="/posts" />} />

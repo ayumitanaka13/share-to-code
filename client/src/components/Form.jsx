@@ -160,7 +160,7 @@ const Form = ({ currentId, setCurrentId }) => {
                 }
                 type="text"
                 color="lightBlue"
-                placeholder="*Theme"
+                placeholder="*Theme (Language or Framework)"
                 iconName="code"
                 required
               />
@@ -228,12 +228,12 @@ const Form = ({ currentId, setCurrentId }) => {
             {addSecond ? (
               addThird ? null : (
                 <div className="px-4">
-                  <Button onClick={handleAddThird}>Add more3?</Button>
+                  <Button onClick={handleAddThird}>Add More</Button>
                 </div>
               )
             ) : (
               <div className="px-4">
-                <Button onClick={handleAddSecond}>Add more2?</Button>
+                <Button onClick={handleAddSecond}>Add More</Button>
               </div>
             )}
 

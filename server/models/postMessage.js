@@ -20,8 +20,6 @@ const postSchema = mongoose.Schema({
     second: { type: String },
     third: { type: String },
   },
-  // tags: [String],
-  // selectedFile: String,
   likes: {
     type: [String],
     default: [],

@@ -71,89 +71,39 @@ const NavBar = () => {
     setTags(tags.filter((tag) => tag !== chipToDelete));
 
   return (
-    <Navbar color="blueGray" navbar className="bg-transparent">
-      <NavbarContainer>
-        <NavbarWrapper>
-          <NavbarBrand>
-            <Link to="/">
-              <span>Share to CODE</span>
-            </Link>
-          </NavbarBrand>
-          <NavbarToggler
-            color="white"
-            onClick={() => setOpenNavbar(!openNavbar)}
-            ripple="light"
-          />
-        </NavbarWrapper>
-
-        <NavbarCollapse open={openNavbar}>
-          <Nav leftSide>
-            {/* <NavItem ripple="light">
-              <Icon name="language" size="xl" />
-              <span>Discover</span>
-            </NavItem> */}
-            {user?.result ? (
-              <>
-                <NavItem ripple="light">
-                  <Icon name="announcement" size="xl" />
-                  <Link to="/auth">
-                    <span>Post</span>
-                  </Link>
-                </NavItem>
-                <NavItem ripple="light">
-                  <Icon name="account_circle" size="xl" />
-                  <span onClick={logout}>Logout</span>
-                </NavItem>
-                <NavItem ripple="light">
-                  {user.result.imageUrl ? (
-                    <img
-                      src={user?.result.imageUrl}
-                      alt={user?.result.name}
-                      className="w-6 rounded-full border-2 border-gray-300 mr-2"
-                    />
-                  ) : null}                 
-                  <span>
-                    Welcome,{" "}
-                    {user.result.name
-                      ? user.result.givenName
-                      : user.result.username}
-                  </span>
-                </NavItem>
-              </>
-            ) : (
-              <>
-                <NavItem ripple="light">
-                  <Icon name="settings" size="xl" />
-                  <Link to="/auth">
-                    <span>Sign In</span>
-                  </Link>
-                </NavItem>
-              </>
-            )}
-          </Nav>
-
-          <NavbarInput
-            type="text"
-            placeholder="Search Posts"
-            name="search"
-            value={search}
-            onKeyDown={handleKeyPress}
-            onChange={(e) => {
-              setSearch(e.target.value);
-            }}
-          />
-          <NavbarInput
-            type="text"
-            placeholder="Search Posts by Tags"
-            name="tags"
-            value={tags}
-            onAdd={(chip) => handleAddChip(chip)}
-            onDelete={(chip) => handleDeleteChip(chip)}
-          />
-          <Button onClick={searchPost}>Search</Button>
-        </NavbarCollapse>
-      </NavbarContainer>
-    </Navbar>
+    <div className="h-16 min-w-full FlexAlign justify-between fixed top-0 bg-gray-300 bg-opacity-80 backdrop-filter backdrop-blur z-50 px-16">
+      <ul className="FlexAlign border">
+        <li className="text-base sm:text-lg xl:text-xl 2xl:text-2xl">
+          <Link to="/">Share to Code</Link>
+        </li>
+      </ul>
+      <ul className="FlexAlign border">
+        {user?.result ? (
+          <>
+            <li className="FlexAlign mr-4">
+              {user.result.imageUrl && (
+                <img
+                  src={user?.result.imageUrl}
+                  alt={user?.result.name}
+                  className="w-8 rounded-full border-2 border-yellow-600 mr-2"
+                />
+              )}
+              Welcome, {user.result.username}
+              {user.result.givenName}
+              {/* {user.result.name ? user.result.givenName : user.result.username} */}
+            </li>
+            <li className="mr-4">
+              <Link to="/auth">Post</Link>
+            </li>
+            <li onClick={logout}>Logout</li>
+          </>
+        ) : (
+          <li>
+            <Link to="/auth">Sign In</Link>
+          </li>
+        )}
+      </ul>
+    </div>
   );
 };
 

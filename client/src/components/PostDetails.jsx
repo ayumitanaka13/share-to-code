@@ -56,7 +56,7 @@ const PostDetails = () => {
       <div className="w-full flex">
         <div className="w-full lg:w-3/4 p-2">
           <Card>
-            <div className="relative border-4">
+            <div className="relative border">
               <CardImage
                 src={
                   thumbnail
@@ -76,6 +76,7 @@ const PostDetails = () => {
             </div>
             <CardBody>
               <Paragraph color="gray">{post.message}</Paragraph>
+              {/* <Paragraph color="gray">{post.materials.first}</Paragraph> */}
               <iframe
                 width="100%"
                 height="315px"
