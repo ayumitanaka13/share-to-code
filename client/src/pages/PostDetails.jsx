@@ -6,7 +6,7 @@ import moment from "moment";
 import { getPost, getPostsBySearch } from "../actions/posts";
 
 import thumbnail from "../images/thumbnail.png";
-import Container from "./UI/Container";
+import Container from "../components/UI/Container";
 
 import Card from "@material-tailwind/react/Card";
 import CardImage from "@material-tailwind/react/CardImage";

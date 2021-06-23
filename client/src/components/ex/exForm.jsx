@@ -3,18 +3,16 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import FileBase from "react-file-base64";
 
-import { createPost, updatePost } from "../actions/posts";
+import { createPost, updatePost } from "../../actions/posts";
 
-import Input from "./UI/Input";
-import Button from "./UI/Button";
+
 import Card from "@material-tailwind/react/Card";
 import CardHeader from "@material-tailwind/react/CardHeader";
 import CardBody from "@material-tailwind/react/CardBody";
 import CardFooter from "@material-tailwind/react/CardFooter";
 import InputIcon from "@material-tailwind/react/InputIcon";
-// import Button from "@material-tailwind/react/Button";
+import Button from "@material-tailwind/react/Button";
 import H5 from "@material-tailwind/react/Heading5";
-import Container from "./UI/Container";
 
 const Form = ({ currentId, setCurrentId }) => {
   const dispatch = useDispatch();
@@ -118,17 +116,17 @@ const Form = ({ currentId, setCurrentId }) => {
   };
 
   return (
-    <Container
-      className="bg-white py-16"
-      content={
-        <div className="w-full FlexJustify bg-white rounded-lg shadow-lg p-8 Border">
-          <form onSubmit={handleSubmit} className="Border">
-            <div className="Border">
-              <h4>{currentId ? "Editing" : "Creating"} Post</h4>
-            </div>
-            <div className="Border">
-              <small>* required</small>
-              <Input
+    <div className="mt-8">
+      <Card>
+        <form onSubmit={handleSubmit}>
+          <CardHeader color="lightBlue" size="lg">
+            <h4>{currentId ? "Editing" : "Creating"} Post</h4>
+          </CardHeader>
+          <CardBody>
+            <small className="px-4">* required</small>
+            <div className="mt-4 mb-8 px-4">
+              <Button />
+              <InputIcon
                 name="title"
                 value={postData.title}
                 onChange={(e) =>
@@ -136,49 +134,56 @@ const Form = ({ currentId, setCurrentId }) => {
                 }
                 type="text"
                 placeholder="*Title"
-                required={true}
+                required
               />
-
-              <Input
+            </div>
+            <div className="mb-8 px-4">
+              <InputIcon
                 name="message"
                 value={postData.message}
                 onChange={(e) =>
                   setPostData({ ...postData, message: e.target.value })
                 }
                 type="text"
+                color="lightBlue"
                 placeholder="*Message"
-                required={true}
+                iconName="message"
+                required
               />
-              <Input
+            </div>
+            <div className="mb-8 px-4">
+              <InputIcon
                 name="theme"
                 value={postData.theme}
                 onChange={(e) =>
                   setPostData({ ...postData, theme: e.target.value })
                 }
                 type="text"
+                color="lightBlue"
                 placeholder="*Theme (Language or Framework)"
-                required={true}
+                iconName="code"
+                required
               />
-              {/* <div className={`${addSecond ? "mb-8" : "mb-4"} px-4`}> */}
-              <Input
+            </div>
+            <div className={`${addSecond ? "mb-8" : "mb-4"} px-4`}>
+              <InputIcon
                 name="matarials.first"
                 defaultValue={postData.materials.first}
                 onChange={(e) =>
                   setPostData({
                     ...postData,
-                    materials: {
-                      ...postData.materials,
-                      first: e.target.value,
-                    },
+                    materials: { ...postData.materials, first: e.target.value },
                   })
                 }
                 type="text"
+                color="lightBlue"
                 placeholder="First Video"
+                iconName="ondemand_video"
               />
-              {/* </div> */}
-              {addSecond && (
-                // <div className={`${addThird ? "mb-8" : "mb-4"} px-4`}>
-                <Input
+            </div>
+            {addSecond && (
+              <div className={`${addThird ? "mb-8" : "mb-4"} px-4`}>
+                <InputIcon
                   name="matarials.second"
                   value={postData.materials.second}
                   onChange={(e) =>
@@ -191,14 +196,16 @@ const Form = ({ currentId, setCurrentId }) => {
                     })
                   }
                   type="text"
+                  color="lightBlue"
                   placeholder="Second Video"
+                  iconName="ondemand_video"
                 />
-                // </div>
-              )}
+              </div>
+            )}
 
-              {addThird && (
-                // <div className="px-4 mb-4">
-                <Input
+            {addThird && (
+              <div className="px-4 mb-4">
+                <InputIcon
                   name="matarials.third"
                   value={postData.materials.third}
                   onChange={(e) =>
@@ -211,29 +218,73 @@ const Form = ({ currentId, setCurrentId }) => {
                     })
                   }
                   type="text"
+                  color="lightBlue"
                   placeholder="Third Video"
+                  iconName="ondemand_video"
                 />
-                // </div>
-              )}
-
-              {addSecond ? (
-                !addThird && (
-                  <Button onClick={handleAddThird} button="Add More" />
-                )
-              ) : (
-                <Button onClick={handleAddSecond} button="Add More" />
-              )}
-            </div>
-            <CardFooter>
-              <div className="flex justify-center">
-                <Button type="submit" button="Submit" />
-                <Button type="button" onClick={handleClear} button="Clear" />
               </div>
-            </CardFooter>
-          </form>
-        </div>
-      }
-    />
+            )}
+
+            {addSecond ? (
+              addThird ? null : (
+                <div className="px-4">
+                  <Button onClick={handleAddThird}>Add More</Button>
+                </div>
+              )
+            ) : (
+              <div className="px-4">
+                <Button onClick={handleAddSecond}>Add More</Button>
+              </div>
+            )}
+
+            {/* <div className="mb-8 px-4">
+              <InputIcon
+                name="tags"
+                value={postData.tags}
+                onAdd={(chip) => handleAddChip(chip)}
+                onDelete={(chip) => handleDeleteChip(chip)}
+                // type="text"
+                color="lightBlue"
+                placeholder="Tags (coma separated)"
+                iconName="more"
+              />
+            </div>
+            <div className="mb-4 px-4">
+              <FileBase
+                type="file"
+                multiple={false}
+                onDone={({ base64 }) =>
+                  setPostData({ ...postData, selectedFile: base64 })
+                }
+              />
+            </div> */}
+          </CardBody>
+          <CardFooter>
+            <div className="flex justify-center">
+              <Button
+                type="submit"
+                color="lightBlue"
+                buttonType="link"
+                size="lg"
+                ripple="dark"
+              >
+                Submit
+              </Button>
+              <Button
+                type="button"
+                onClick={handleClear}
+                color="lightBlue"
+                buttonType="link"
+                size="lg"
+                ripple="dark"
+              >
+                Clear
+              </Button>
+            </div>
+          </CardFooter>
+        </form>
+      </Card>
+    </div>
   );
 };
 

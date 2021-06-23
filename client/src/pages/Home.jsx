@@ -3,11 +3,11 @@ import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
 
 import { getPostsBySearch } from "../actions/posts";
-import Container from "./UI/Container";
+import Container from "../components/UI/Container";
 import Posts from "../components/Posts";
 import Form from "../components/Form";
-import Paginate from "./UI/Paginate";
-import Hero from "./Hero";
+import Paginate from "../components/UI/Paginate";
+import Hero from "../components/Hero";
 // import logo from "./images/logo.png"
 
 const useQuery = () => {
@@ -47,13 +47,12 @@ const Home = () => {
     setTags(tags.filter((tag) => tag !== chipToDelete));
 
   return (
-    <Container>
+    <>
       <Hero />
       <Posts setCurrentId={setCurrentId} />
-
       <Form currentId={currentId} setCurrentId={setCurrentId} />
-      {!searchQuery && !tags.length && <Paginate page={page} />}
-    </Container>
+      {/* {!searchQuery && !tags.length && <Paginate page={page} />} */}
+    </>
   );
 };
 
