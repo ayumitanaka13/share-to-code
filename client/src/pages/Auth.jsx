@@ -7,13 +7,16 @@ import { AUTH } from "../constants/actionTypes";
 import { signin, signup } from "../actions/auth";
 import Container from "../components/UI/Container";
 
-import Card from "@material-tailwind/react/Card";
+// import Card from "@material-tailwind/react/Card";
 import CardHeader from "@material-tailwind/react/CardHeader";
 import CardBody from "@material-tailwind/react/CardBody";
 import CardFooter from "@material-tailwind/react/CardFooter";
 import InputIcon from "@material-tailwind/react/InputIcon";
-import Button from "@material-tailwind/react/Button";
+// import Button from "@material-tailwind/react/Button";
 import H5 from "@material-tailwind/react/Heading5";
+import Input from "../components/UI/Input";
+import Button from "../components/UI/Button";
+import Card from "../components/Card/Card";
 
 const initialState = {
   username: "",
@@ -77,50 +80,40 @@ const Auth = () => {
           </CardHeader>
           <form onSubmit={handleSubmit}>
             <CardBody>
-              <div className="mt-4 mb-8 px-4">
-                <InputIcon
-                  name="email"
-                  onChange={handleChange}
-                  type="email"
-                  color="lightBlue"
-                  placeholder="Email Address"
-                  iconName="email"
-                />
-              </div>
-              <div className={isSignup ? "mb-8 px-4" : "mb-4 px-4"}>
-                <InputIcon
-                  name="password"
-                  onChange={handleChange}
-                  // handleShowPassword={handleShowPassword}
-                  type={showPassword ? "text" : "password"}
-                  color="lightBlue"
-                  placeholder="Password"
-                  iconName="lock"
-                />
-              </div>
+              <Input
+                name="email"
+                onChange={handleChange}
+                type="email"
+                placeholder="Email Address"
+                required={true}
+              />
+              {/* <div className={isSignup ? "mb-8 px-4" : "mb-4 px-4"}> */}
+              <Input
+                name="password"
+                onChange={handleChange}
+                // handleShowPassword={handleShowPassword}
+                type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                required={true}
+              />
+              {/* </div> */}
 
               {isSignup && (
                 <>
-                  <div className="mb-8 px-4">
-                    <InputIcon
-                      name="confirmPassword"
-                      onChange={handleChange}
-                      type="password"
-                      color="lightBlue"
-                      placeholder="Confirm Password"
-                      iconName="lock"
-                    />
-                  </div>
-                  <div className="mb-8 px-4">
-                    <InputIcon
-                      name="username"
-                      onChange={handleChange}
-                      type="text"
-                      color="lightBlue"
-                      placeholder="Username"
-                      iconName="account_circle"
-                    />
-                  </div>
+                  <Input
+                    name="confirmPassword"
+                    onChange={handleChange}
+                    type="password"
+                    placeholder="Confirm Password"
+                    required={true}
+                  />
+                  <Input
+                    name="username"
+                    onChange={handleChange}
+                    type="text"
+                    placeholder="Username"
+                    required={true}
+                  />
                 </>
               )}
             </CardBody>
@@ -128,13 +121,9 @@ const Auth = () => {
               <div className="flex justify-center">
                 <Button
                   type="submit"
-                  color="lightBlue"
-                  buttonType="link"
-                  size="lg"
-                  ripple="dark"
-                >
-                  {isSignup ? "Sign Up" : "Sign In"}
-                </Button>
+                  button={isSignup ? "Sign Up" : "Sign In"}
+                />
+
                 {!isSignup && (
                   <GoogleLogin
                     clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
@@ -145,13 +134,8 @@ const Auth = () => {
                       <Button
                         onClick={renderProps.onClick}
                         disabled={renderProps.disabled}
-                        color="lightBlue"
-                        buttonType="link"
-                        size="lg"
-                        ripple="dark"
-                      >
-                        Sign In with Google
-                      </Button>
+                        button="Sign In with Google"
+                      />
                     )}
                   />
                 )}
@@ -159,11 +143,14 @@ const Auth = () => {
             </CardFooter>
             <CardFooter>
               <div className="flex justify-center">
-                <Button onClick={switchMode}>
-                  {isSignup
-                    ? "Already have an account? Sign in"
-                    : "Don't have an account? Sign Up"}
-                </Button>
+                <Button
+                  onClick={switchMode}
+                  button={
+                    isSignup
+                      ? "Already have an account? Sign in"
+                      : "Don't have an account? Sign Up"
+                  }
+                />
               </div>
             </CardFooter>
           </form>

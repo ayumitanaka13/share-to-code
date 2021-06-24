@@ -121,11 +121,12 @@ const Form = ({ currentId, setCurrentId }) => {
     <Container
       className="bg-white py-16"
       content={
-        <div className="w-full FlexJustify bg-white rounded-lg shadow-lg p-8 Border">
-          <form onSubmit={handleSubmit} className="Border">
-            <div className="Border">
+        <Card>
+          <form onSubmit={handleSubmit}>
+            <div className="bg-gray-100 text-center -mt-8 py-4 rounded shadow">
               <h4>{currentId ? "Editing" : "Creating"} Post</h4>
             </div>
+
             <div className="Border">
               <small>* required</small>
               <Input
@@ -224,14 +225,13 @@ const Form = ({ currentId, setCurrentId }) => {
                 <Button onClick={handleAddSecond} button="Add More" />
               )}
             </div>
-            <CardFooter>
-              <div className="flex justify-center">
-                <Button type="submit" button="Submit" />
-                <Button type="button" onClick={handleClear} button="Clear" />
-              </div>
-            </CardFooter>
+
+            <div className="flex justify-center">
+              <Button type="submit" button="Submit" />
+              <Button type="button" onClick={handleClear} button="Clear" />
+            </div>
           </form>
-        </div>
+        </Card>
       }
     />
   );

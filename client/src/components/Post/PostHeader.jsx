@@ -2,7 +2,7 @@ import React from 'react'
 
 const PostHeader = ({src}) => {
     return (
-        <div className="-mt-10 Border">
+        <div className="-mt-8 Border">
           <img src={src} alt="" className="rounded-lg shadow-lg Border" />
         </div>
         // <div className="w-full h-full flex items-center justify-center absolute top-0 -mt-4 border">

@@ -53,7 +53,7 @@ const NavBar = () => {
   };
 
   return (
-    <div className="h-16 min-w-full FlexAlign justify-between fixed top-0 bg-gray-200 bg-opacity-80 backdrop-filter backdrop-blur z-50 px-16">
+    <div className="h-16 min-w-full FlexAlign justify-between fixed top-0 backdrop-filter backdrop-blur bg-gray-100 bg-opacity-50 z-50 px-16">
       <ul className="FlexAlign border">
         <li className="text-base sm:text-lg xl:text-xl 2xl:text-2xl">
           <Link to="/">Share to Code</Link>

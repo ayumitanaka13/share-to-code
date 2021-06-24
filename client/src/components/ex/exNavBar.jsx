@@ -143,7 +143,7 @@ const NavBar = () => {
             setSearch(e.target.value);
           }}
           onSubmit={searchPost}
-          className="text-indigo-900"
+          className="text-red-900"
         />
         {/* <NavbarInput
             type="text"

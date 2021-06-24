@@ -7,7 +7,7 @@ import moment from "moment";
 import { getPost, deletePost, likePost } from "../../actions/posts";
 import thumbnail from "../../images/thumbnail.png";
 
-import Card from "../UI/Card";
+import Card from "../Card/Card";
 import Button from "../UI/Button";
 import PostHeader from "./PostHeader";
 import PostBody from "./PostBody";

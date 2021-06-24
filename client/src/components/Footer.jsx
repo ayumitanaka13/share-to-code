@@ -53,7 +53,7 @@ const Footer = () => {
   };
 
   return (
-    <div className="h-32 min-w-full FlexAlign justify-between  bg-gray-200 px-16">
+    <div className="h-32 min-w-full FlexAlign justify-between static bottom-0 px-16">
       <ul className="FlexAlign border">
         <li className="text-base sm:text-lg xl:text-xl 2xl:text-2xl">
           <Link to="/">Share to Code Footer</Link>
