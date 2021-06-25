@@ -37,7 +37,10 @@ const Post = ({ post, setCurrentId }) => {
 
   return (
     <Card>
-      <PostHeader src={thumbnail} />
+      <PostHeader
+        src={thumbnail}
+        title={<h2>{post.title}</h2>}
+      />
       <PostBody
         message={`${post.message.split(" ").splice(0, 12).join(" ")}...`}
         username={post.username}

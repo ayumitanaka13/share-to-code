@@ -1,19 +1,19 @@
-import React from 'react'
+import React from "react";
 
-const PostHeader = ({src}) => {
-    return (
-        <div className="-mt-8 Border">
-          <img src={src} alt="" className="rounded-lg shadow-lg Border" />
+const PostHeader = ({ src, alt, title }) => {
+  return (
+    <div className="relative -mt-8">
+      <img src={src} alt={alt} className="rounded-lg shadow-lg" />
+      <div className="h-full w-full FlexCenter absolute top-0 Border">
+        <div className="text-white text-center Border">
+          <h1>
+            <i className="fab fa-react mb-2" />
+          </h1>
+          {title}
         </div>
-        // <div className="w-full h-full flex items-center justify-center absolute top-0 -mt-4 border">
-        // <div className="text-center">
-        //   <h1>
-        //     <i className="fab fa-react mb-2" />
-        //   </h1>
-        //   <h3>{post.title}</h3>
-        // </div>
-        // </div> 
-    )
-}
+      </div>
+    </div>
+  );
+};
 
-export default PostHeader
+export default PostHeader;

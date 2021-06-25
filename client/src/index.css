@@ -65,6 +65,15 @@
   .ImgSize {
     @apply h-72 2xl:h-96 w-72 2xl:w-96;
   }
+  .RoundShadow-lg {
+    @apply rounded-lg shadow-lg;
+  }
+  .RoundShadow-md {
+    @apply rounded-md shadow-md;
+  }
+  .RoundShadow {
+    @apply rounded shadow;
+  }
 
   .Border {
     @apply border-gray-300 border-2;
