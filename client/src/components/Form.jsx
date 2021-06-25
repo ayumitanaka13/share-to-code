@@ -117,7 +117,6 @@ const Form = ({ currentId, setCurrentId }) => {
           <Card>
             {user?.result ? (
               <form onSubmit={handleSubmit}>
-                {/* <FormHeader currentId={currentId} /> */}
                 <h4>{currentId ? "Editing" : "Creating"} Post</h4>
 
                 <div className="mt-2">
@@ -222,7 +221,7 @@ const Form = ({ currentId, setCurrentId }) => {
                 </div>
               </form>
             ) : (
-              <div className="text-center m-4">
+              <div className="text-center m-4 Border">
                 <h1>Let's share your roadmaps to the world!</h1>
                 <Link to="/auth">
                   <Button button="Sign Up Now" className="mt-6" />
