@@ -7,8 +7,6 @@ import Container from "./UI/Container";
 const Posts = ({ setCurrentId }) => {
   const { posts, isLoading } = useSelector((state) => state.posts);
 
-  console.log("posts data", posts);
-
   if (!posts.length && !isLoading) return <>No Posts</>;
 
   // return isLoading ? (

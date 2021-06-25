@@ -110,6 +110,8 @@ const Form = ({ currentId, setCurrentId }) => {
     setAddThird(!addThird);
   };
 
+  console.log(postData.materials);
+
   return (
     <Container
       content={
@@ -163,12 +165,12 @@ const Form = ({ currentId, setCurrentId }) => {
                       })
                     }
                     type="text"
-                    placeholder="First Video"
+                    placeholder="First YouTube"
                   />
                   {addSecond && (
                     <Input
                       name="matarials.second"
-                      value={postData.materials.second}
+                      defaultValue={postData.materials.second}
                       onChange={(e) =>
                         setPostData({
                           ...postData,
@@ -179,13 +181,13 @@ const Form = ({ currentId, setCurrentId }) => {
                         })
                       }
                       type="text"
-                      placeholder="Second Video"
+                      placeholder="Second YouTube"
                     />
                   )}
                   {addThird && (
                     <Input
                       name="matarials.third"
-                      value={postData.materials.third}
+                      defaultValue={postData.materials.third}
                       onChange={(e) =>
                         setPostData({
                           ...postData,
@@ -196,21 +198,23 @@ const Form = ({ currentId, setCurrentId }) => {
                         })
                       }
                       type="text"
-                      placeholder="Third Video"
+                      placeholder="Third YouTube"
                     />
                   )}
                   {addSecond ? (
                     !addThird && (
                       <Button
+                        type="button"
                         onClick={handleAddThird}
-                        button="Add More"
+                        button="Add More Link"
                         className="bg-gray-100 mt-4"
                       />
                     )
                   ) : (
                     <Button
+                      type="button"
                       onClick={handleAddSecond}
-                      button="Add More"
+                      button="Add More Link"
                       className="bg-gray-100 mt-4"
                     />
                   )}

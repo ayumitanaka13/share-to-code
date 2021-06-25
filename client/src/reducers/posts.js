@@ -37,6 +37,7 @@ export default (state = { isLoading: true, posts: [] }, action) => {
     case CREATE:
       return { ...state, posts: [...state.posts, action.payload] };
     case UPDATE:
+      console.log(state.posts);
       return {
         ...state,
         posts: state.posts.map((post) =>

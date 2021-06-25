@@ -7,7 +7,7 @@ const PostHeader = ({ src, alt, title }) => {
       <div className="h-full w-full FlexCenter absolute top-0 Border">
         <div className="text-white text-center Border">
           <h1>
-            <i className="fab fa-react mb-2" />
+            <i className="fab fa-react text-white mb-2" />
           </h1>
           {title}
         </div>

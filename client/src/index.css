@@ -9,7 +9,7 @@
     @apply bg-gray-100 text-indigo-800 font-poppins font-semibold;
   }
   h1 {
-    @apply text-4xl sm:text-5xl xl:text-6xl 2xl:text-7xl;
+    @apply text-5xl xl:text-6xl 2xl:text-7xl;
   }
   h2 {
     @apply text-3xl sm:text-4xl xl:text-5xl 2xl:text-6xl;
@@ -33,7 +33,7 @@
     @apply text-xs sm:text-sm xl:text-base font-sans font-normal text-gray-500;
   }
   i {
-    @apply text-white;
+    @apply text-orange;
   }
   li {
     @apply text-sm sm:text-base xl:text-lg 2xl:text-xl;
@@ -63,7 +63,7 @@
     @apply flex justify-center;
   }
   .ImgSize {
-    @apply h-72 2xl:h-96 w-72 2xl:w-96;
+    @apply h-64 md:h-72 2xl:h-96 w-64 md:w-72 2xl:w-96;
   }
   .RoundShadow-lg {
     @apply rounded-lg shadow-lg;

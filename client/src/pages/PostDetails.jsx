@@ -48,7 +48,7 @@ const PostDetails = () => {
 
   return (
     <Container
-      className="pt-32"
+      className="mt-16"
       content={
         <>
           <div className="w-full lg:w-3/4 FlexJustify">
@@ -58,7 +58,6 @@ const PostDetails = () => {
                 message={post.message}
                 youtube={post.materials.first}
               />
-              {console.log(recommendedPosts)}
               {!!recommendedPosts.length && (
                 <PostDetailsFooter
                   content={recommendedPosts.map(

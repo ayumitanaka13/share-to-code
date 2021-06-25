@@ -66,7 +66,8 @@ const Auth = () => {
 
   return (
     <Container
-      className="pt-32"
+      // className="pt-32"
+      className="mt-16"
       content={
         <div className="w-full FlexAlign flex-wrap sm:flex-nowrap">
           <Card>
@@ -111,7 +112,7 @@ const Auth = () => {
                 <Button
                   type="submit"
                   button={isSignup ? "Sign Up" : "Sign In"}
-                  className="mr-4"
+                  className="mx-2"
                 />
                 {!isSignup && (
                   <GoogleLogin
@@ -124,11 +125,13 @@ const Auth = () => {
                         onClick={renderProps.onClick}
                         disabled={renderProps.disabled}
                         button="Sign In with Google"
-                        className="mr-4"
+                        className="mx-2"
                       />
                     )}
                   />
                 )}
+                {/* </div> */}
+                {/* <div className="FlexJustify mt-2"> */}
                 <Button
                   onClick={switchMode}
                   button={
@@ -136,7 +139,7 @@ const Auth = () => {
                       ? "Already have an account? Sign in"
                       : "Don't have an account? Sign Up"
                   }
-                  className="bg-gray-100"
+                  className="bg-gray-100 mx-2"
                 />
               </div>
             </form>

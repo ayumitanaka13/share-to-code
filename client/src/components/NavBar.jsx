@@ -9,7 +9,6 @@ import { LOGOUT } from "../constants/actionTypes";
 import Button from "./UI/Button";
 
 const NavBar = () => {
-  // const [openNavbar, setOpenNavbar] = useState(false);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   // const [search, setSearch] = useState("");
   // const [tags, setTags] = useState([]);
@@ -55,16 +54,33 @@ const NavBar = () => {
   // };
 
   return (
-    <div className="h-16 min-w-full FlexAlign justify-between fixed top-0 backdrop-filter backdrop-blur bg-gray-100 bg-opacity-50 z-50 px-16">
+    <div className="h-16 min-w-full FlexAlign justify-between fixed top-0 left-0 backdrop-filter backdrop-blur bg-gray-100 bg-opacity-50 z-50 px-8 lg:px-16">
+      {/* {user?.result && (
+        <div className="h-16 min-w-full FlexAlign lg:hidden absolute top-16 left-0 backdrop-filter backdrop-blur bg-gray-200 bg-opacity-80 px-8">
+          <ul>
+            <li className="flex items-center mr-4">
+              {user.result.imageUrl && (
+                <img
+                  src={user?.result.imageUrl}
+                  alt={user?.result.name}
+                  className="w-8 rounded-full mr-2"
+                />
+              )}
+              Welcome, {user.result.username}
+              {user.result.givenName}
+            </li>
+          </ul>
+        </div>
+      )} */}
       <ul className="FlexAlign border">
         <li className="text-base sm:text-lg xl:text-xl 2xl:text-2xl">
           <Link to="/">Share to Code</Link>
         </li>
       </ul>
-      <ul className="FlexAlign border">
+      <ul className="FlexAlign">
         {user?.result ? (
           <>
-            <li className="FlexAlign mr-4">
+            <li className="hidden lg:flex items-center mr-4">
               {user.result.imageUrl && (
                 <img
                   src={user?.result.imageUrl}
@@ -76,9 +92,8 @@ const NavBar = () => {
               {user.result.givenName}
               {/* {user.result.name ? user.result.givenName : user.result.username} */}
             </li>
-
             <Link to="/auth">
-              <Button button="Post" className="mr-4" />
+              <Button button="Post" className="mr-2 sm:mr-4" />
             </Link>
             <Button button="Log Out" onClick={logout} />
           </>

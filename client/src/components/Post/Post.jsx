@@ -23,12 +23,16 @@ const Post = ({ post, setCurrentId }) => {
       return post.likes.find(
         (like) => like === (user?.result?.googleId || user?.result?._id)
       ) ? (
-        <>{post.likes.length} ♡</>
+        <>
+          {post.likes.length} <i className="fas fa-heart" />
+        </>
       ) : (
-        <>{post.likes.length} ♡</>
+        <>
+          {post.likes.length} <i className="fas fa-heart" />
+        </>
       );
     }
-    return <>♡</>;
+    return <i className="fas fa-heart" />;
   };
 
   const openPost = (e) => {
@@ -37,10 +41,7 @@ const Post = ({ post, setCurrentId }) => {
 
   return (
     <Card>
-      <PostHeader
-        src={thumbnail}
-        title={<h2>{post.title}</h2>}
-      />
+      <PostHeader src={thumbnail} title={<h4>{post.title}</h4>} />
       <PostBody
         message={`${post.message.split(" ").splice(0, 12).join(" ")}...`}
         username={post.username}
@@ -49,18 +50,21 @@ const Post = ({ post, setCurrentId }) => {
       <PostFooter
         content={
           <>
+            {/* <div className="flex justify-between"> */}
             <Button
               disabled={!user?.result}
               onClick={() => dispatch(likePost(post._id))}
               button={<Likes />}
             />
             <Button onClick={openPost} button="more" />
+            {/* </div> */}
             {(user?.result?.googleId === post?.creator ||
               user?.result?._id === post?.creator) && (
+              // <div className="flex justify-between">
               <>
                 <Button
                   onClick={() => dispatch(deletePost(post._id))}
-                  button="delete"
+                  button={<i className="fa fa-times" />}
                   className="bg-gray-100"
                 />
                 <Button
@@ -68,10 +72,11 @@ const Post = ({ post, setCurrentId }) => {
                     e.stopPropagation();
                     setCurrentId(post._id);
                   }}
-                  button="edit"
+                  button={<i className="fas fa-edit" />}
                   className="bg-gray-100"
                 />
               </>
+              // </div>
             )}
           </>
         }
