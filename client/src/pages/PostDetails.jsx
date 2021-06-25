@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useHistory, useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 
-import { getPost, getPostsBySearch } from "../actions/posts";
+import { getPost } from "../actions/posts";
 
 import thumbnail from "../images/thumbnail.png";
 import Container from "../components/UI/Container";
@@ -11,14 +11,10 @@ import Container from "../components/UI/Container";
 import Card from "@material-tailwind/react/Card";
 import CardImage from "@material-tailwind/react/CardImage";
 import CardBody from "@material-tailwind/react/CardBody";
-import CardFooter from "@material-tailwind/react/CardFooter";
 import H6 from "@material-tailwind/react/Heading6";
 import Paragraph from "@material-tailwind/react/Paragraph";
 import Button from "@material-tailwind/react/Button";
 import CardRow from "@material-tailwind/react/CardRow";
-import CardHeader from "@material-tailwind/react/CardHeader";
-import CardStatus from "@material-tailwind/react/CardStatus";
-import CardStatusFooter from "@material-tailwind/react/CardStatusFooter";
 import Icon from "@material-tailwind/react/Icon";
 
 const PostDetails = () => {

@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import moment from "moment";
 
-import { getPost, deletePost, likePost } from "../../actions/posts";
+import { deletePost, likePost } from "../../actions/posts";
 import thumbnail from "../../images/thumbnail.png";
 
 import Card from "../Card/Card";
@@ -58,6 +58,7 @@ const Post = ({ post, setCurrentId }) => {
                 <Button
                   onClick={() => dispatch(deletePost(post._id))}
                   button="delete"
+                  className="bg-gray-100"
                 />
                 <Button
                   onClick={(e) => {
@@ -65,6 +66,7 @@ const Post = ({ post, setCurrentId }) => {
                     setCurrentId(post._id);
                   }}
                   button="edit"
+                  className="bg-gray-100"
                 />
               </>
             )}

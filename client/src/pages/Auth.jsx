@@ -7,16 +7,10 @@ import { AUTH } from "../constants/actionTypes";
 import { signin, signup } from "../actions/auth";
 import Container from "../components/UI/Container";
 
-// import Card from "@material-tailwind/react/Card";
-import CardHeader from "@material-tailwind/react/CardHeader";
-import CardBody from "@material-tailwind/react/CardBody";
-import CardFooter from "@material-tailwind/react/CardFooter";
-import InputIcon from "@material-tailwind/react/InputIcon";
-// import Button from "@material-tailwind/react/Button";
-import H5 from "@material-tailwind/react/Heading5";
 import Input from "../components/UI/Input";
 import Button from "../components/UI/Button";
 import Card from "../components/Card/Card";
+import Top3 from "../images/top-3.png";
 
 const initialState = {
   username: "",
@@ -72,58 +66,53 @@ const Auth = () => {
 
   return (
     <Container
-      className="mt-16 py-16"
+      className="pt-32"
       content={
-        <Card>
-          <CardHeader color="lightBlue" size="lg">
-            <H5 color="white">{isSignup ? "Sign Up" : "Sign In"}</H5>
-          </CardHeader>
-          <form onSubmit={handleSubmit}>
-            <CardBody>
-              <Input
-                name="email"
-                onChange={handleChange}
-                type="email"
-                placeholder="Email Address"
-                required={true}
-              />
-              {/* <div className={isSignup ? "mb-8 px-4" : "mb-4 px-4"}> */}
-              <Input
-                name="password"
-                onChange={handleChange}
-                // handleShowPassword={handleShowPassword}
-                type={showPassword ? "text" : "password"}
-                placeholder="Password"
-                required={true}
-              />
-              {/* </div> */}
-
+        <div className="w-full FlexAlign flex-wrap sm:flex-nowrap">
+          <Card>
+            <form onSubmit={handleSubmit}>
+              <h4>{isSignup ? "Sign Up" : "Sign In"}</h4>
+              <div className="mt-2">
+                <Input
+                  name="email"
+                  onChange={handleChange}
+                  type="email"
+                  placeholder="*Email Address"
+                  required={true}
+                />
+                <Input
+                  name="password"
+                  onChange={handleChange}
+                  // handleShowPassword={handleShowPassword}
+                  type={showPassword ? "text" : "password"}
+                  placeholder="*Password"
+                  required={true}
+                />
+              </div>
               {isSignup && (
-                <>
+                <div className="mt-2">
                   <Input
                     name="confirmPassword"
                     onChange={handleChange}
                     type="password"
-                    placeholder="Confirm Password"
+                    placeholder="*Confirm Password"
                     required={true}
                   />
                   <Input
                     name="username"
                     onChange={handleChange}
                     type="text"
-                    placeholder="Username"
+                    placeholder="*Username"
                     required={true}
                   />
-                </>
+                </div>
               )}
-            </CardBody>
-            <CardFooter>
-              <div className="flex justify-center">
+              <div className="FlexJustify mt-4">
                 <Button
                   type="submit"
                   button={isSignup ? "Sign Up" : "Sign In"}
+                  className="mr-4"
                 />
-
                 {!isSignup && (
                   <GoogleLogin
                     clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
@@ -135,14 +124,11 @@ const Auth = () => {
                         onClick={renderProps.onClick}
                         disabled={renderProps.disabled}
                         button="Sign In with Google"
+                        className="mr-4"
                       />
                     )}
                   />
                 )}
-              </div>
-            </CardFooter>
-            <CardFooter>
-              <div className="flex justify-center">
                 <Button
                   onClick={switchMode}
                   button={
@@ -150,11 +136,13 @@ const Auth = () => {
                       ? "Already have an account? Sign in"
                       : "Don't have an account? Sign Up"
                   }
+                  className="bg-gray-100"
                 />
               </div>
-            </CardFooter>
-          </form>
-        </Card>
+            </form>
+          </Card>
+          <img src={Top3} alt="" className="ImgSize Border" />
+        </div>
       }
     />
   );

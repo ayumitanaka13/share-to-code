@@ -4,13 +4,15 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import decode from "jwt-decode";
 
 import { LOGOUT } from "../constants/actionTypes";
-import { getPostsBySearch } from "../actions/posts";
+// import { getPostsBySearch } from "../actions/posts";
+
+import Button from "./UI/Button";
 
 const NavBar = () => {
-  const [openNavbar, setOpenNavbar] = useState(false);
+  // const [openNavbar, setOpenNavbar] = useState(false);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
-  const [search, setSearch] = useState("");
-  const [tags, setTags] = useState([]);
+  // const [search, setSearch] = useState("");
+  // const [tags, setTags] = useState([]);
 
   const dispatch = useDispatch();
   const location = useLocation();
@@ -35,22 +37,22 @@ const NavBar = () => {
     setUser(JSON.parse(localStorage.getItem("profile")));
   }, [location]);
 
-  const searchPost = () => {
-    if (search.trim() || tags) {
-      dispatch(getPostsBySearch({ search, tags: tags.join(",") }));
-      history.push(
-        `/posts/search?searchQuery=${search || "none"}&tags=${tags.join(",")}`
-      );
-    } else {
-      history.push("/");
-    }
-  };
+  // const searchPost = () => {
+  //   if (search.trim() || tags) {
+  //     dispatch(getPostsBySearch({ search, tags: tags.join(",") }));
+  //     history.push(
+  //       `/posts/search?searchQuery=${search || "none"}&tags=${tags.join(",")}`
+  //     );
+  //   } else {
+  //     history.push("/");
+  //   }
+  // };
 
-  const handleKeyPress = (e) => {
-    if (e.keyCode === 13) {
-      searchPost();
-    }
-  };
+  // const handleKeyPress = (e) => {
+  //   if (e.keyCode === 13) {
+  //     searchPost();
+  //   }
+  // };
 
   return (
     <div className="h-16 min-w-full FlexAlign justify-between fixed top-0 backdrop-filter backdrop-blur bg-gray-100 bg-opacity-50 z-50 px-16">
@@ -74,15 +76,16 @@ const NavBar = () => {
               {user.result.givenName}
               {/* {user.result.name ? user.result.givenName : user.result.username} */}
             </li>
-            <li className="mr-4">
-              <Link to="/auth">Post</Link>
-            </li>
-            <li onClick={logout}>Logout</li>
+
+            <Link to="/auth">
+              <Button button="Post" className="mr-4" />
+            </Link>
+            <Button button="Log Out" onClick={logout} />
           </>
         ) : (
-          <li>
-            <Link to="/auth">Sign In</Link>
-          </li>
+          <Link to="/auth">
+            <Button button="Sign In" />
+          </Link>
         )}
       </ul>
     </div>

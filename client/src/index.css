@@ -27,10 +27,10 @@
     @apply text-base sm:text-lg xl:text-xl 2xl:text-2xl;
   }
   p {
-    @apply text-sm sm:text-base xl:text-lg 2xl:text-xl font-medium;
+    @apply text-sm sm:text-base xl:text-lg 2xl:text-xl font-sans font-normal text-gray-500;
   }
   small {
-    @apply text-xs sm:text-sm xl:text-base font-normal;
+    @apply text-xs sm:text-sm xl:text-base font-sans font-normal text-gray-500;
   }
   i {
     @apply text-white;
@@ -42,7 +42,10 @@
     @apply font-medium normal-case;
   } */
   button {
-    @apply text-sm sm:text-base xl:text-lg 2xl:text-xl font-medium bg-orange bg-opacity-20 hover:bg-opacity-30 text-orange rounded shadow cursor-pointer focus:outline-none py-1 px-6;
+    @apply text-sm sm:text-base xl:text-lg 2xl:text-xl font-medium bg-orange bg-opacity-20 hover:bg-opacity-30 text-orange rounded shadow-none hover:shadow transform hover:-translate-y-1 duration-300 cursor-pointer focus:outline-none py-2 px-6;
+  }
+  input {
+    @apply h-12 w-full text-sm sm:text-base xl:text-lg 2xl:text-xl font-normal bg-gray-50 focus:bg-gray-100 placeholder-gray-300 rounded shadow-inner transform hover:-translate-y-1 duration-300 focus:outline-none mt-4 px-4;
   }
   /* button {
     @apply text-sm sm:text-base xl:text-lg 2xl:text-xl font-medium bg-yellow-500 bg-opacity-30 hover:bg-opacity-40 text-yellow-500 rounded shadow cursor-pointer focus:outline-none py-1 px-6;
@@ -63,7 +66,7 @@
     @apply h-72 2xl:h-96 w-72 2xl:w-96;
   }
 
-  /* .Border {
+  .Border {
     @apply border-gray-300 border-2;
-  } */
+  }
 }

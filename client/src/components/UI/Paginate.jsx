@@ -6,7 +6,6 @@ import { getPosts } from "../../actions/posts";
 
 import Pagination from "@material-tailwind/react/Pagination";
 import PaginationItem from "@material-tailwind/react/PaginationItem";
-import Icon from "@material-tailwind/react/Icon";
 
 const Paginate = ({ page }) => {
   const { numberOfPages } = useSelector((state) => state.posts);

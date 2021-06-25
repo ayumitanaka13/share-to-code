@@ -1,15 +1,23 @@
 import React from "react";
 
-const Input = ({ name, value, type, placeholder, onChange, required }) => {
+const Input = ({
+  name,
+  value,
+  type,
+  placeholder,
+  onChange,
+  required,
+  className,
+}) => {
   return (
     <input
-      className="h-12 w-full bg-gray-50 rounded shadow-inner focus:outline-none mt-4 px-2"
       name={name}
       value={value}
       type={type}
       placeholder={placeholder}
       onChange={onChange}
       required={required}
+      className={className}
     />
   );
 };
