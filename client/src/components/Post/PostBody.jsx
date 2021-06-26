@@ -6,7 +6,7 @@ const PostBody = ({ message, username, moment }) => {
       <p>{message}...</p>
       <div className="FlexAlign justify-between mt-2">
         <p className="text-gray-400">
-          <i class="fas fa-user-edit text-gray-400"></i> {username}
+          <i className="fas fa-user-edit text-gray-400"></i> {username}
         </p>
         <small>{moment}</small>
       </div>

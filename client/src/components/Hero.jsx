@@ -1,11 +1,29 @@
-import React from "react";
-import Top1 from "../images/top-1.png";
-import Top2 from "../images/top-2.png";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+
+import { getPostsBySearch } from "../actions/posts";
+
 import Input from "./UI/Input";
 import Button from "./UI/Button";
 import Container from "./UI/Container";
+import Top1 from "../images/top-1.png";
+import Top2 from "../images/top-2.png";
 
 const Hero = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const [search, setSearch] = useState("");
+
+  const searchPost = () => {
+    if (search.trim()) {
+      dispatch(getPostsBySearch({ search }));
+      history.push(`/posts/search?searchQuery=${search || "none"}`);
+    } else {
+      history.push("/");
+    }
+  };
+
   return (
     <Container
       className="pt-24 lg:pt-32"
@@ -24,11 +42,17 @@ const Hero = () => {
               >
                 <Input
                   type="search"
+                  name="search"
+                  value={search}
                   placeholder="Find Roadmaps"
+                  onChange={(e) => {
+                    setSearch(e.target.value);
+                  }}
                   className="bg-gray-100"
                 />
                 <Button
                   button="Search"
+                  onClick={searchPost}
                   className="h-10 w-full lg:w-auto mt-1 lg:mt-4"
                 />
               </form>

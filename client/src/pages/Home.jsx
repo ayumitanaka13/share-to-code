@@ -12,11 +12,10 @@ const useQuery = () => {
 
 const Home = () => {
   const [currentId, setCurrentId] = useState(0);
-
   const query = useQuery();
+
   const searchQuery = query.get("searchQuery");
   const page = query.get("page") || 1;
-
   const [tags, setTags] = useState([]);
 
   return (

@@ -7,8 +7,6 @@ import Auth from "./pages/Auth";
 import PostDetails from "./pages/PostDetails";
 import Footer from "./components/Footer";
 
-import "@material-tailwind/react/tailwind.css";
-
 const App = () => {
   const user = JSON.parse(localStorage.getItem("profile"));
 

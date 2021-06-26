@@ -54,8 +54,6 @@ const Form = ({ currentId, setCurrentId }) => {
         second: "",
         third: "",
       },
-      // tags: [],
-      // selectedFile: "",
     });
   };
 
@@ -86,21 +84,6 @@ const Form = ({ currentId, setCurrentId }) => {
     }
     handleClear();
   };
-
-  // if (!user?.result) {
-  //   return <p>Please Sign in</p>;
-  // }
-
-  // const handleAddChip = (tag) => {
-  //   setPostData({ ...postData, tags: [...postData.tags, tag] });
-  // };
-
-  // const handleDeleteChip = (chipToDelete) => {
-  //   setPostData({
-  //     ...postData,
-  //     tags: postData.tags.filter((tag) => tag !== chipToDelete),
-  //   });
-  // };
 
   const handleAddSecond = () => {
     setAddSecond(!addSecond);

@@ -5,16 +5,14 @@ import moment from "moment";
 
 import { getPost } from "../actions/posts";
 
-import thumbnail from "../images/thumbnail.png";
 import Container from "../components/UI/Container";
 import Card from "../components/Card/Card";
-import Button from "../components/UI/Button";
 import PostHeader from "../components/Post/PostHeader";
-import PostBody from "../components/Post/PostBody";
 import PostDetailsBody from "../components/PostDetails/PostDetailsBody";
-import PostFooter from "../components/Post/PostFooter";
 import PostDetailsFooter from "../components/PostDetails/PostDetailsFooter";
 import PostDetailsSide from "../components/PostDetails/PostDetailsSide";
+import thumbnail from "../images/thumbnail.png";
+import Loading from "../components/UI/Loading";
 
 const PostDetails = () => {
   const { post, posts, isLoading } = useSelector((state) => state.posts);
@@ -39,16 +37,15 @@ const PostDetails = () => {
 
   const openPost = (_id) => history.push(`/posts/${_id}`);
 
-  //   if (isLoading) {
-  //     return <>progress...</>;
-  //   }
-
   const recommendedPosts = posts.filter(({ _id }) => _id !== post._id);
 
   return (
     <Container
       className="mt-16"
       content={
+        // isLoading ? (
+        //   <Loading />
+        // ) : (
         <>
           <div className="w-full md:w-3/4 FlexJustify">
             <Card>
@@ -62,29 +59,27 @@ const PostDetails = () => {
               />
               {!!recommendedPosts.length && (
                 <PostDetailsFooter
-                  content={recommendedPosts.map(
-                    ({ title, username, message, _id }) => (
-                      <div
-                        key={_id}
-                        onClick={() => openPost(_id)}
-                        className="h-24 sm:h-32 w-full relative my-2"
-                      >
-                        <img
-                          src={thumbnail}
-                          alt=""
-                          className="h-full w-full object-cover RoundShadow-lg"
-                        />
-                        <div className="h-full w-full FlexCenter absolute top-0">
-                          <div className="text-white text-center">
-                            <h1>
-                              <i className="fab fa-react text-white mb-2" />
-                            </h1>
-                            <h6>{title}</h6>
-                          </div>
+                  content={recommendedPosts.map(({ title, _id }) => (
+                    <div
+                      key={_id}
+                      onClick={() => openPost(_id)}
+                      className="h-24 sm:h-32 w-full relative my-2"
+                    >
+                      <img
+                        src={thumbnail}
+                        alt=""
+                        className="h-full w-full object-cover RoundShadow-lg"
+                      />
+                      <div className="h-full w-full FlexCenter absolute top-0">
+                        <div className="text-white text-center">
+                          <h1>
+                            <i className="fab fa-react text-white mb-2" />
+                          </h1>
+                          <h6>{title}</h6>
                         </div>
                       </div>
-                    )
-                  )}
+                    </div>
+                  ))}
                 />
               )}
             </Card>
@@ -99,6 +94,7 @@ const PostDetails = () => {
             />
           </div>
         </>
+        // )
       }
     />
   );

@@ -47,9 +47,6 @@
   input {
     @apply h-10 w-full text-sm sm:text-base xl:text-lg 2xl:text-xl font-normal bg-gray-50 focus:bg-gray-100 placeholder-gray-300 rounded shadow-inner transform hover:-translate-y-1 duration-300 focus:outline-none mt-4 px-4;
   }
-  /* button {
-    @apply text-sm sm:text-base xl:text-lg 2xl:text-xl font-medium bg-yellow-500 bg-opacity-30 hover:bg-opacity-40 text-yellow-500 rounded shadow cursor-pointer focus:outline-none py-1 px-6;
-  } */
 }
 
 @layer components {

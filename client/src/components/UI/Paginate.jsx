@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 import { getPosts } from "../../actions/posts";
 
-import Pagination from "@material-tailwind/react/Pagination";
-import PaginationItem from "@material-tailwind/react/PaginationItem";
+// import Pagination from "@material-tailwind/react/Pagination";
+// import PaginationItem from "@material-tailwind/react/PaginationItem";
 
 const Paginate = ({ page }) => {
   const { numberOfPages } = useSelector((state) => state.posts);
@@ -18,17 +18,15 @@ const Paginate = ({ page }) => {
   }, [dispatch, page]);
 
   return (
-    <Pagination
+    <div
       count={numberOfPages}
       page={Number(page) || 1}
-      renderItem={(item) => (
-        <PaginationItem
+      renderitem={(item) => (
+        <div
           {...item}
           component={Link}
           to={`/posts?page=${item.page}`}
-          color="lightBlue"
           href="#1"
-          ripple="light"
         />
       )}
     />
