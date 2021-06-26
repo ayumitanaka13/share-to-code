@@ -1,10 +1,15 @@
 import React from "react";
+import Button from "../UI/Button";
 
 const PostDetailsFooter = ({ content }) => {
   return (
-    <div className="mt-4 Border">
-      <h6>You might also like</h6>
-      <div className="FlexJustify mt-4 Border">{content}</div>
+    <div className="mt-8">
+      <div className="bg-gray-100 text-center RoundShadow p-4">
+        {/* <div className="bg-orange bg-opacity-20 text-center RoundShadow p-4"> */}
+        {/* <h6 className>Read Next</h6> */}
+        <h6 className="text-orange">Read Next</h6>
+      </div>
+      <div className="h-96 overflow-y-scroll mt-2">{content}</div>
     </div>
   );
 };

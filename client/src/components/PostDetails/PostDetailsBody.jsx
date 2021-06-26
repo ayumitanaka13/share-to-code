@@ -1,21 +1,17 @@
 import React from "react";
+import YouTube from "./YouTube";
 
-const PostDetailsBody = ({ message, youtube }) => {
+const PostDetailsBody = ({ message, youtube, youtube2, youtube3 }) => {
   return (
     <div className="mt-4">
       <div className="bg-gray-50 RoundShadow p-4">
         <p>{message}</p>
       </div>
-      <iframe
-        width="100%"
-        height="480px"
-        src={`https://www.youtube.com/embed/${youtube.split("=")[1]}`}
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-        className="RoundShadow mt-4"
-      ></iframe>
+      <div className="h-60 lg:h-72 xl:h-96 w-full mt-4">
+        <YouTube youtube={youtube} />
+        {/* <YouTube youtube={youtube2} />
+        <YouTube youtube={youtube3} /> */}
+      </div>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import Card from "../Card/Card";
+import Heart from "../Heart";
 import Button from "../UI/Button";
 
 const PostDetailsSide = ({ username, createdAt, theme, likes }) => {
@@ -7,11 +8,18 @@ const PostDetailsSide = ({ username, createdAt, theme, likes }) => {
     <Card>
       <div>
         <p>{username}</p>
-        <p>{createdAt}</p>
+        <small>{createdAt}</small>
       </div>
-      <div className="FlexAlign justify-between mt-4">
+      <div className="FlexAlign justify-between flex-wrap xl:flex-nowrap mt-4">
         <Button button={`#${theme}`} />
-        <Button button={`♡${likes}`} className="ml-2" />
+        <Button
+          button={
+            <>
+              <Heart /> {likes}
+            </>
+          }
+          className="mt-2 xl:mt-0 ml-0 xl:ml-2"
+        />
       </div>
     </Card>
   );

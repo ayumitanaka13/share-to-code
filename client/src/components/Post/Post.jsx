@@ -12,6 +12,7 @@ import Button from "../UI/Button";
 import PostHeader from "./PostHeader";
 import PostBody from "./PostBody";
 import PostFooter from "./PostFooter";
+import Heart from "../Heart";
 
 const Post = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
@@ -24,15 +25,15 @@ const Post = ({ post, setCurrentId }) => {
         (like) => like === (user?.result?.googleId || user?.result?._id)
       ) ? (
         <>
-          {post.likes.length} <i className="fas fa-heart" />
+          {post.likes.length} <Heart />
         </>
       ) : (
         <>
-          {post.likes.length} <i className="fas fa-heart" />
+          {post.likes.length} <Heart />
         </>
       );
     }
-    return <i className="fas fa-heart" />;
+    return <Heart />;
   };
 
   const openPost = (e) => {
@@ -43,7 +44,7 @@ const Post = ({ post, setCurrentId }) => {
     <Card>
       <PostHeader src={thumbnail} title={<h4>{post.title}</h4>} />
       <PostBody
-        message={`${post.message.split(" ").splice(0, 12).join(" ")}...`}
+        message={post.message.split("").splice(0, 45).join("")}
         username={post.username}
         moment={moment(post.createdAt).fromNow()}
       />
@@ -56,7 +57,7 @@ const Post = ({ post, setCurrentId }) => {
               onClick={() => dispatch(likePost(post._id))}
               button={<Likes />}
             />
-            <Button onClick={openPost} button="more" />
+            <Button onClick={openPost} button="More" />
             {/* </div> */}
             {(user?.result?.googleId === post?.creator ||
               user?.result?._id === post?.creator) && (

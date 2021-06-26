@@ -110,8 +110,6 @@ const Form = ({ currentId, setCurrentId }) => {
     setAddThird(!addThird);
   };
 
-  console.log(postData.materials);
-
   return (
     <Container
       content={
@@ -219,7 +217,7 @@ const Form = ({ currentId, setCurrentId }) => {
                     />
                   )}
                 </div>
-                <div className="FlexJustify mt-4">
+                <div className="FlexJustify mt-6">
                   <Button type="submit" button="Submit" className="mr-4" />
                   <Button type="button" onClick={handleClear} button="Clear" />
                 </div>
@@ -228,7 +226,7 @@ const Form = ({ currentId, setCurrentId }) => {
               <div className="text-center m-4 Border">
                 <h1>Let's share your roadmaps to the world!</h1>
                 <Link to="/auth">
-                  <Button button="Sign Up Now" className="mt-6" />
+                  <Button button="Sign In Now" className="mt-6" />
                 </Link>
               </div>
             )}

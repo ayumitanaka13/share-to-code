@@ -12,7 +12,7 @@ const Hero = () => {
       content={
         <>
           <img src={Top1} alt="top1" className="ImgSize hidden xl:block" />
-          <div className="FlexAlign px-0 sm:px-2 md:px-4 2xl:px-6 pb-4 sm:pb-0 Border">
+          <div className="FlexAlign px-0 sm:px-2 xl:px-4 2xl:px-6 pb-4 sm:pb-0 Border">
             <div className="text-center Border">
               <h1>Share to Code</h1>
               <h5 className="text-xl 2xl:text-2xl text-orange mt-4">
@@ -29,7 +29,7 @@ const Hero = () => {
                 />
                 <Button
                   button="Search"
-                  className="h-12 w-full lg:w-auto mt-1 lg:mt-4"
+                  className="h-10 w-full lg:w-auto mt-1 lg:mt-4"
                 />
               </form>
             </div>

@@ -108,11 +108,11 @@ const Auth = () => {
                   />
                 </div>
               )}
-              <div className="FlexJustify mt-4">
+              <div className="FlexJustify flex-wrap">
                 <Button
                   type="submit"
                   button={isSignup ? "Sign Up" : "Sign In"}
-                  className="mx-2"
+                  className="mx-2  mt-4"
                 />
                 {!isSignup && (
                   <GoogleLogin
@@ -122,10 +122,11 @@ const Auth = () => {
                     cookiePolicy="single_host_origin"
                     render={(renderProps) => (
                       <Button
+                        type="submit"
                         onClick={renderProps.onClick}
                         disabled={renderProps.disabled}
                         button="Sign In with Google"
-                        className="mx-2"
+                        className="mx-2  mt-4"
                       />
                     )}
                   />
@@ -133,13 +134,14 @@ const Auth = () => {
                 {/* </div> */}
                 {/* <div className="FlexJustify mt-2"> */}
                 <Button
+                  type="button"
                   onClick={switchMode}
                   button={
                     isSignup
                       ? "Already have an account? Sign in"
                       : "Don't have an account? Sign Up"
                   }
-                  className="bg-gray-100 mx-2"
+                  className="bg-gray-100 mx-2  mt-4"
                 />
               </div>
             </form>

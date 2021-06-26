@@ -18,7 +18,6 @@ import PostDetailsSide from "../components/PostDetails/PostDetailsSide";
 
 const PostDetails = () => {
   const { post, posts, isLoading } = useSelector((state) => state.posts);
-  console.log(post);
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -51,7 +50,7 @@ const PostDetails = () => {
       className="mt-16"
       content={
         <>
-          <div className="w-full lg:w-3/4 FlexJustify">
+          <div className="w-full md:w-3/4 FlexJustify">
             <Card>
               <PostHeader src={thumbnail} title={<h2>{post.title}</h2>} />
               <PostDetailsBody
@@ -62,24 +61,25 @@ const PostDetails = () => {
                 <PostDetailsFooter
                   content={recommendedPosts.map(
                     ({ title, username, message, _id }) => (
-                      <Card key={_id} onClick={() => openPost(_id)}>
-                        <PostHeader
+                      <div
+                        key={_id}
+                        onClick={() => openPost(_id)}
+                        className="h-32 w-full relative my-2"
+                      >
+                        <img
                           src={thumbnail}
-                          title={
-                            <h6>{`${title
-                              .split(" ")
-                              .splice(0, 3)
-                              .join(" ")}...`}</h6>
-                          }
+                          alt=""
+                          className="h-full w-full object-cover RoundShadow-lg"
                         />
-                        <PostBody
-                          message={`${message
-                            .split(" ")
-                            .splice(0, 4)
-                            .join(" ")}...`}
-                          username={username}
-                        />
-                      </Card>
+                        <div className="h-full w-full FlexCenter absolute top-0">
+                          <div className="text-white text-center">
+                            <h1>
+                              <i className="fab fa-react text-white mb-2" />
+                            </h1>
+                            <h6>{title}</h6>
+                          </div>
+                        </div>
+                      </div>
                     )
                   )}
                 />
@@ -87,7 +87,7 @@ const PostDetails = () => {
             </Card>
           </div>
 
-          <div className="h-48 w-full lg:w-1/4 FlexJustify">
+          <div className="h-48 xl:h-40 w-full md:w-1/4 FlexJustify">
             <PostDetailsSide
               username={post.username}
               createdAt={moment(post.createdAt).fromNow()}

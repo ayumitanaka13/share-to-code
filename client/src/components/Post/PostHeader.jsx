@@ -3,9 +3,9 @@ import React from "react";
 const PostHeader = ({ src, alt, title }) => {
   return (
     <div className="relative -mt-8">
-      <img src={src} alt={alt} className="rounded-lg shadow-lg" />
-      <div className="h-full w-full FlexCenter absolute top-0 Border">
-        <div className="text-white text-center Border">
+      <img src={src} alt={alt} className="RoundShadow-lg" />
+      <div className="h-full w-full FlexCenter absolute top-0">
+        <div className="text-white text-center px-2">
           <h1>
             <i className="fab fa-react text-white mb-2" />
           </h1>
