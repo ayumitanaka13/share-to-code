@@ -66,10 +66,9 @@ const Auth = () => {
 
   return (
     <Container
-      // className="pt-32"
       className="mt-16"
       content={
-        <div className="w-full FlexAlign flex-wrap sm:flex-nowrap">
+        <div className="w-full FlexCenter flex-col-reverse md:flex-row">
           <Card>
             <form onSubmit={handleSubmit}>
               <h4>{isSignup ? "Sign Up" : "Sign In"}</h4>
@@ -141,12 +140,12 @@ const Auth = () => {
                       ? "Already have an account? Sign in"
                       : "Don't have an account? Sign Up"
                   }
-                  className="bg-gray-100 mx-2  mt-4"
+                  className="bg-gray-100 mx-2 mt-4"
                 />
               </div>
             </form>
           </Card>
-          <img src={Top3} alt="" className="ImgSize Border" />
+          <img src={Top3} alt="" className="ImgSize ml-0 md:ml-4" />
         </div>
       }
     />

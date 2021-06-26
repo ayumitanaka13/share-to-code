@@ -75,7 +75,7 @@
     @apply transform hover:-translate-y-1 duration-300;
   }
   .ImgSize {
-    @apply h-64 md:h-72 2xl:h-96 w-64 md:w-72 2xl:w-96;
+    @apply h-64 sm:h-72 2xl:h-96 w-64 sm:w-72 2xl:w-96;
   }
 
   .Border {

@@ -111,7 +111,7 @@ const NavBar = () => {
                   <img
                     src={user?.result.imageUrl}
                     alt={user?.result.name}
-                    className="w-6 rounded-full border-2 border-gray-300 mr-2"
+                    className="w-6 rounded-full-2-gray-300 mr-2"
                   />
                 ) : null}
                 <span>

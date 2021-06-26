@@ -7,7 +7,7 @@ const PostDetailsBody = ({ message, youtube, youtube2, youtube3 }) => {
       <div className="bg-gray-50 RoundShadow p-4">
         <p>{message}</p>
       </div>
-      <div className="h-60 lg:h-72 xl:h-96 w-full mt-4">
+      <div className="h-36 sm:h-60 lg:h-72 xl:h-96 w-full mt-4">
         <YouTube youtube={youtube} />
         {/* <YouTube youtube={youtube2} />
         <YouTube youtube={youtube3} /> */}

@@ -12,8 +12,8 @@ const Hero = () => {
       content={
         <>
           <img src={Top1} alt="top1" className="ImgSize hidden xl:block" />
-          <div className="FlexAlign px-0 sm:px-2 xl:px-4 2xl:px-6 pb-4 sm:pb-0 Border">
-            <div className="text-center Border">
+          <div className="FlexAlign px-0 md:px-2 xl:px-4 2xl:px-6 pb-4 md:pb-0">
+            <div className="text-center">
               <h1>Share to Code</h1>
               <h5 className="text-xl 2xl:text-2xl text-orange mt-4">
                 Share your roadmap on how to learn coding!

@@ -52,7 +52,10 @@ const PostDetails = () => {
         <>
           <div className="w-full md:w-3/4 FlexJustify">
             <Card>
-              <PostHeader src={thumbnail} title={<h2>{post.title}</h2>} />
+              <PostHeader
+                src={thumbnail}
+                title={<h2 className="text-2xl">{post.title}</h2>}
+              />
               <PostDetailsBody
                 message={post.message}
                 youtube={post.materials.first}
@@ -64,7 +67,7 @@ const PostDetails = () => {
                       <div
                         key={_id}
                         onClick={() => openPost(_id)}
-                        className="h-32 w-full relative my-2"
+                        className="h-24 sm:h-32 w-full relative my-2"
                       >
                         <img
                           src={thumbnail}
@@ -87,7 +90,7 @@ const PostDetails = () => {
             </Card>
           </div>
 
-          <div className="h-48 xl:h-40 w-full md:w-1/4 FlexJustify">
+          <div className="h-36 sm:h-40 md:h-48 xl:h-40 w-full md:w-1/4 FlexJustify">
             <PostDetailsSide
               username={post.username}
               createdAt={moment(post.createdAt).fromNow()}

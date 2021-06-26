@@ -54,7 +54,7 @@ const NavBar = () => {
   // };
 
   return (
-    <div className="h-16 min-w-full FlexAlign justify-between fixed top-0 left-0 backdrop-filter backdrop-blur bg-gray-100 bg-opacity-80 shadow-sm z-50 px-8 lg:px-16">
+    <div className="h-16 min-w-full FlexAlign justify-between flex-wrap sm:flex-nowrap fixed top-0 left-0 backdrop-filter backdrop-blur bg-gray-100 bg-opacity-80 shadow-sm z-50 px-8 lg:px-16">
       {/* {user?.result && (
         <div className="h-16 min-w-full FlexAlign lg:hidden absolute top-16 left-0 backdrop-filter backdrop-blur bg-gray-200 bg-opacity-80 px-8">
           <ul>
@@ -72,7 +72,7 @@ const NavBar = () => {
           </ul>
         </div>
       )} */}
-      <ul className="FlexAlign border">
+      <ul className="FlexAlign">
         <li className="text-base sm:text-lg xl:text-xl 2xl:text-2xl Hover">
           <Link to="/">Share to Code</Link>
         </li>

@@ -113,12 +113,11 @@ const Form = ({ currentId, setCurrentId }) => {
   return (
     <Container
       content={
-        <div className="w-full FlexAlign flex-wrap sm:flex-nowrap">
+        <div className="w-full FlexCenter flex-col-reverse md:flex-row">
           <Card>
             {user?.result ? (
               <form onSubmit={handleSubmit}>
                 <h4>{currentId ? "Editing" : "Creating"} Post</h4>
-
                 <div className="mt-2">
                   <Input
                     name="title"
@@ -223,15 +222,16 @@ const Form = ({ currentId, setCurrentId }) => {
                 </div>
               </form>
             ) : (
-              <div className="text-center m-4 Border">
+              <div className="text-center">
                 <h1>Let's share your roadmaps to the world!</h1>
                 <Link to="/auth">
-                  <Button button="Sign In Now" className="mt-6" />
+                  <Button button="Sign In Right Now" className="mt-4 xl:mt-6" />
                 </Link>
               </div>
             )}
           </Card>
-          <img src={Human3} alt="" className="ImgSize Border" />
+
+          <img src={Human3} alt="" className="ImgSize mb-4 md:mb-0" />
         </div>
       }
     />
