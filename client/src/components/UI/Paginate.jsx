@@ -10,6 +10,7 @@ import { getPosts } from "../../actions/posts";
 const Paginate = ({ page }) => {
   const { numberOfPages } = useSelector((state) => state.posts);
   const dispatch = useDispatch();
+  
 
   useEffect(() => {
     if (page) {

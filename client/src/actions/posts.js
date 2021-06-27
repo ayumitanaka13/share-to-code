@@ -22,15 +22,17 @@ export const getPost = (id) => async (dispatch) => {
   }
 };
 
-export const getPosts = (page) => async (dispatch) => {
+export const getPosts = () => async (dispatch) => {
   try {
     dispatch({ type: START_LOADING });
     const {
-      data: { data, currentPage, numberOfPages },
-    } = await api.fetchPosts(page);
+      data: { data },
+      // data: { data, currentPage, numberOfPages },
+    } = await api.fetchPosts();
     dispatch({
       type: FETCH_ALL,
-      payload: { data, currentPage, numberOfPages },
+      payload: { data },
+      // payload: { data, currentPage, numberOfPages },
     });
     dispatch({ type: END_LOADING });
   } catch (error) {
@@ -39,11 +41,14 @@ export const getPosts = (page) => async (dispatch) => {
 };
 
 export const getPostsBySearch = (searchQuery) => async (dispatch) => {
+  console.log(searchQuery);
   try {
     dispatch({ type: START_LOADING });
+    // const res = await api.fetchPostsBySearch(searchQuery); // --> koji
     const {
       data: { data },
     } = await api.fetchPostsBySearch(searchQuery);
+    console.log("data: ", data);
     dispatch({ type: FETCH_BY_SEARCH, payload: { data } });
     dispatch({ type: END_LOADING });
   } catch (error) {

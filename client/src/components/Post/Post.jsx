@@ -42,7 +42,7 @@ const Post = ({ post, setCurrentId }) => {
 
   return (
     <Card>
-      <PostHeader src={thumbnail} title={<h4>{post.title}</h4>} />
+      <PostHeader theme={post.theme} src={thumbnail} title={<h4>{post.title}</h4>} />
       <PostBody
         message={post.message.split("").splice(0, 45).join("")}
         username={post.username}

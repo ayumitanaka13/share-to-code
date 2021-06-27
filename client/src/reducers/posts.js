@@ -20,10 +20,11 @@ export default (state = { isLoading: true, posts: [] }, action) => {
       return {
         ...state,
         posts: action.payload.data,
-        currentPage: action.payload.currentPage,
-        numberOfPages: action.payload.numberOfPages,
+        // currentPage: action.payload.currentPage,
+        // numberOfPages: action.payload.numberOfPages,
       };
     case FETCH_BY_SEARCH:
+      console.log("YO??: ", action.payload);
       return { ...state, posts: action.payload.data };
     case FETCH_POST:
       return { ...state, post: action.payload.post };

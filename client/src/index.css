@@ -47,6 +47,9 @@
   input {
     @apply h-10 w-full text-sm sm:text-base xl:text-lg 2xl:text-xl font-normal bg-gray-50 focus:bg-gray-100 placeholder-gray-300 rounded shadow-inner transform hover:-translate-y-1 duration-300 focus:outline-none mt-4 px-4;
   }
+  textarea {
+    @apply h-20 w-full text-sm sm:text-base xl:text-lg 2xl:text-xl font-normal bg-gray-50 focus:bg-gray-100 placeholder-gray-300 rounded shadow-inner transform hover:-translate-y-1 duration-300 focus:outline-none mt-4 py-2 px-4;
+  }
 }
 
 @layer components {

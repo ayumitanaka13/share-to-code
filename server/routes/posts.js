@@ -14,9 +14,13 @@ import auth from "../middleware/auth.js";
 
 const router = express.Router();
 
-router.get("/", getPosts);
+const sayHello = () => {
+  console.log("SAY HELLO");
+};
+
+router.get("/", sayHello, getPosts);
 router.get("/:id", getPost);
-router.get("/search", getPostsBySearch);
+router.get("/search", sayHello, getPostsBySearch);
 router.post("/", auth, createPost);
 // patch - a method to partially update a resource
 router.patch("/:id", auth, updatePost);

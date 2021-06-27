@@ -36,12 +36,14 @@ const Hero = () => {
               <h5 className="text-xl 2xl:text-2xl text-orange mt-4">
                 Share your roadmap on how to learn coding!
               </h5>
-              <form
-                action=""
+              <div
+                // action="/posts/search"
+                // method="GET"
                 className="flex flex-wrap lg:flex-nowrap items-end"
               >
                 <Input
-                  type="search"
+                  // type="search"
+                  type="text"
                   name="search"
                   value={search}
                   placeholder="Find Roadmaps"
@@ -55,7 +57,7 @@ const Hero = () => {
                   onClick={searchPost}
                   className="h-10 w-full lg:w-auto mt-1 lg:mt-4"
                 />
-              </form>
+              </div>
             </div>
           </div>
           <img src={Top2} alt="top2" className="ImgSize" />

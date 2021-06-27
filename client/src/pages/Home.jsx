@@ -23,7 +23,7 @@ const Home = () => {
       <Hero />
       <Posts setCurrentId={setCurrentId} />
       <Form currentId={currentId} setCurrentId={setCurrentId} />
-      {!searchQuery && !tags.length && <Paginate page={page} />}
+      {/* {!searchQuery && !tags.length && <Paginate page={page} />} */}
     </>
   );
 };

@@ -10,6 +10,7 @@ import Button from "./UI/Button";
 import Card from "./Card/Card";
 import Container from "./UI/Container";
 import Human3 from "../images/human-3.png";
+import Textarea from "./UI/Textarea";
 
 const Form = ({ currentId, setCurrentId }) => {
   const dispatch = useDispatch();
@@ -99,8 +100,10 @@ const Form = ({ currentId, setCurrentId }) => {
         <div className="w-full FlexCenter flex-col-reverse md:flex-row">
           <Card>
             {user?.result ? (
-              <form onSubmit={handleSubmit}>
-                <h4>{currentId ? "Editing" : "Creating"} Post</h4>
+              <form onSubmit={handleSubmit} className="text-gray-500">
+                <h4 className="text-indigo-800">
+                  {currentId ? "Editing" : "Creating"} Post
+                </h4>
                 <div className="mt-2">
                   <Input
                     name="title"
@@ -112,7 +115,7 @@ const Form = ({ currentId, setCurrentId }) => {
                     placeholder="*Title"
                     required={true}
                   />
-                  <Input
+                  <Textarea
                     name="message"
                     value={postData.message}
                     onChange={(e) =>
@@ -132,6 +135,16 @@ const Form = ({ currentId, setCurrentId }) => {
                     placeholder="*Theme (Language or Framework)"
                     required={true}
                   />
+                  {/* <Input
+                    name="theme"
+                    value={postData.theme}
+                    onChange={(e) =>
+                      setPostData({ ...postData, theme: e.target.value })
+                    }
+                    type="text"
+                    placeholder="*Theme (Language or Framework)"
+                    required={true}
+                  /> */}
                   <Input
                     name="matarials.first"
                     defaultValue={postData.materials.first}
@@ -205,7 +218,7 @@ const Form = ({ currentId, setCurrentId }) => {
                 </div>
               </form>
             ) : (
-              <div className="text-center">
+              <div className="text-center m-2">
                 <h1>Let's share your roadmaps to the world!</h1>
                 <Link to="/auth">
                   <Button button="Sign In Right Now" className="mt-4 xl:mt-6" />
