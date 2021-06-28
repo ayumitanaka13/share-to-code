@@ -3,9 +3,9 @@ import { useDispatch } from "react-redux";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import decode from "jwt-decode";
 
-import { LOGOUT } from "../constants/actionTypes";
+import { LOGOUT } from "../../constants/actionTypes";
 
-import Button from "./UI/Button";
+import Button from "./Button";
 
 const NavBar = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));

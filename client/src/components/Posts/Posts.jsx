@@ -1,14 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getPosts } from "../actions/posts";
-import Post from "./Post/Post";
+import { getPosts } from "../../actions/posts";
+import Post from "../Post/Post";
 
-import Container from "./UI/Container";
-import Loading from "./UI/Loading";
+import Container from "../UI/Container";
+import Loading from "../UI/Loading";
 
 const Posts = ({ setCurrentId }) => {
   const { posts, isLoading } = useSelector((state) => state.posts);
-  // console.log("posts", posts);
   const dispatch = useDispatch();
 
   useEffect(() => {

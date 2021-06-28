@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "../Card/Card";
-import Heart from "../Heart";
+import Heart from "../UI/Heart";
 import Button from "../UI/Button";
 
 const PostDetailsSide = ({ username, createdAt, theme, likes }) => {

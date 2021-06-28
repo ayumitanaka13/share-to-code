@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import Posts from "../components/Posts";
-import Form from "../components/Form";
-import Paginate from "../components/UI/Paginate";
-import Hero from "../components/Hero";
+import Posts from "../components/Posts/Posts";
+import Form from "../components/Form/Form";
+import Paginate from "../components/ex/exPaginate";
+import Hero from "../components/Hero/Hero";
 
 const useQuery = () => {
   return new URLSearchParams(useLocation().search);

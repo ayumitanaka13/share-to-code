@@ -3,14 +3,14 @@ import { Link, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 // import FileBase from "react-file-base64";
 
-import { createPost, updatePost } from "../actions/posts";
+import { createPost, updatePost } from "../../actions/posts";
 
-import Input from "./UI/Input";
-import Button from "./UI/Button";
-import Card from "./Card/Card";
-import Container from "./UI/Container";
-import Human3 from "../images/human-3.png";
-import Textarea from "./UI/Textarea";
+import Input from "../UI/Input";
+import Button from "../UI/Button";
+import Card from "../Card/Card";
+import Container from "../UI/Container";
+import Human3 from "../../images/human-3.png";
+import Textarea from "../UI/Textarea";
 
 const Form = ({ currentId, setCurrentId }) => {
   const dispatch = useDispatch();

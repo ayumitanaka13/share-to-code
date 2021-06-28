@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 
-import NavBar from "./components/NavBar";
+import NavBar from "./components/UI/NavBar";
 import Home from "./pages/Home";
 import Auth from "./pages/Auth";
 import PostDetails from "./pages/PostDetails";
-import Footer from "./components/Footer";
+import Footer from "./components/UI/Footer";
 
 const App = () => {
   const user = JSON.parse(localStorage.getItem("profile"));

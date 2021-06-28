@@ -12,7 +12,7 @@ import Button from "../UI/Button";
 import PostHeader from "./PostHeader";
 import PostBody from "./PostBody";
 import PostFooter from "./PostFooter";
-import Heart from "../Heart";
+import Heart from "../UI/Heart";
 
 const Post = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();

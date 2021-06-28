@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { getPostsBySearch } from "../actions/posts";
+import { getPostsBySearch } from "../../actions/posts";
 
-import Input from "./UI/Input";
-import Button from "./UI/Button";
-import Container from "./UI/Container";
-import Top1 from "../images/top-1.png";
-import Top2 from "../images/top-2.png";
+import Input from "../UI/Input";
+import Button from "../UI/Button";
+import Container from "../UI/Container";
+import Top1 from "../../images/top-1.png";
+import Top2 from "../../images/top-2.png";
 
 const Hero = () => {
   const dispatch = useDispatch();
