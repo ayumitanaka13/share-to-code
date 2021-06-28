@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../../actions/posts";
-import Post from "../Post/Post";
 
 import Container from "../UI/Container";
 import Loading from "../UI/Loading";
+import Post from "../Post/Post";
 
 const Posts = ({ setCurrentId }) => {
   const { posts, isLoading } = useSelector((state) => state.posts);

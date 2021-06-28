@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-  // baseURL: "https://share-to-code.herokuapp.com",
-  baseURL: "http://localhost:5000",
+  baseURL: "https://share-to-code.herokuapp.com",
+  // baseURL: "http://localhost:5000",
 });
 
 API.interceptors.request.use((req) => {

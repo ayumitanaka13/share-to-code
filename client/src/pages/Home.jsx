@@ -1,22 +1,21 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 
+import Hero from "../components/Hero/Hero";
 import Posts from "../components/Posts/Posts";
 import Form from "../components/Form/Form";
-import Paginate from "../components/ex/exPaginate";
-import Hero from "../components/Hero/Hero";
 
-const useQuery = () => {
-  return new URLSearchParams(useLocation().search);
-};
+// const useQuery = () => {
+//   return new URLSearchParams(useLocation().search);
+// };
 
 const Home = () => {
   const [currentId, setCurrentId] = useState(0);
-  const query = useQuery();
 
-  const searchQuery = query.get("searchQuery");
-  const page = query.get("page") || 1;
-  const [tags, setTags] = useState([]);
+  // const query = useQuery();
+  // const searchQuery = query.get("searchQuery");
+  // const page = query.get("page") || 1;
+  // const [tags, setTags] = useState([]);
 
   return (
     <>

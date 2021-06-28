@@ -1,10 +1,7 @@
 import React from "react";
-import thumbnail from "../../images/thumbnail.png";
+// import thumbnail from "../../images/thumbnail.png";
 
 const PostHeader = ({ theme, src, alt, title }) => {
-  // const { posts } = useSelector((state) => state.posts);
-  // console.log("Header", posts);
-  // console.log("Header", posts.theme);
   // console.log(theme);
 
   // switch (theme) {
