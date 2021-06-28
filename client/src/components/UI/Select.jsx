@@ -15,18 +15,21 @@ const Select = ({
     //   value={value}
     //   type={type}
     //   placeholder={placeholder}
-    //   onChange={onChange}
-    //   required={required}
+    // onChange={onChange}
+    // required={required}
     //   className={className}
     // />
-    <select id="theme">
-      <option value="" disabled selected>*Theme</option>
-      <option value="dog">Dog</option>
-      <option value="cat">Cat</option>
-      <option value="hamster">Hamster</option>
-      <option value="parrot">Parrot</option>
-      <option value="spider">Spider</option>
-      <option value="goldfish">Goldfish</option>
+    <select id="theme" name={name} onChange={onChange} required={required}>
+      <option value="" disabled selected>
+        *Theme
+      </option>
+      <option value="HTML">HTML</option>
+      <option value="CSS">CSS</option>
+      <option value="Sass">Sass</option>
+      <option value="JavaScript">JavaScript</option>
+      <option value="React">React</option>
+      <option value="Node">Node</option>
+      <option value="Other">Other</option>
     </select>
   );
 };

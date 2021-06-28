@@ -5,12 +5,13 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { createPost, updatePost } from "../../actions/posts";
 
-import Input from "../UI/Input";
-import Button from "../UI/Button";
-import Card from "../Card/Card";
 import Container from "../UI/Container";
-import Human3 from "../../images/human-3.png";
+import Card from "../Card/Card";
+import Input from "../UI/Input";
 import Textarea from "../UI/Textarea";
+import Select from "../UI/Select";
+import Button from "../UI/Button";
+import Human3 from "../../images/human-3.png";
 
 const Form = ({ currentId, setCurrentId }) => {
   const dispatch = useDispatch();
@@ -125,14 +126,11 @@ const Form = ({ currentId, setCurrentId }) => {
                     placeholder="*Message"
                     required={true}
                   />
-                  <Input
+                  <Select
                     name="theme"
-                    value={postData.theme}
                     onChange={(e) =>
                       setPostData({ ...postData, theme: e.target.value })
                     }
-                    type="text"
-                    placeholder="*Theme (Language or Framework)"
                     required={true}
                   />
                   {/* <Input

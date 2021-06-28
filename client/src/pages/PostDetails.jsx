@@ -11,8 +11,8 @@ import PostHeader from "../components/Post/PostHeader";
 import PostDetailsBody from "../components/PostDetails/PostDetailsBody";
 import PostDetailsFooter from "../components/PostDetails/PostDetailsFooter";
 import PostDetailsSide from "../components/PostDetails/PostDetailsSide";
-import thumbnail from "../images/thumbnail.png";
 import Loading from "../components/UI/Loading";
+import RecommendedPost from "../components/PostDetails/RecommendedPost";
 
 const PostDetails = () => {
   const { post, posts, isLoading } = useSelector((state) => state.posts);
@@ -50,7 +50,7 @@ const PostDetails = () => {
           <div className="w-full md:w-3/4 FlexJustify">
             <Card>
               <PostHeader
-                src={thumbnail}
+                theme={post.theme}
                 title={<h2 className="text-2xl">{post.title}</h2>}
               />
               <PostDetailsBody
@@ -59,26 +59,13 @@ const PostDetails = () => {
               />
               {!!recommendedPosts.length && (
                 <PostDetailsFooter
-                  content={recommendedPosts.map(({ title, _id }) => (
-                    <div
+                  content={recommendedPosts.map(({ _id, title, theme }) => (
+                    <RecommendedPost
                       key={_id}
                       onClick={() => openPost(_id)}
-                      className="h-24 sm:h-32 w-full relative my-2"
-                    >
-                      <img
-                        src={thumbnail}
-                        alt=""
-                        className="h-full w-full object-cover RoundShadow-lg"
-                      />
-                      <div className="h-full w-full FlexCenter absolute top-0">
-                        <div className="text-white text-center">
-                          <h1>
-                            <i className="fab fa-react text-white mb-2" />
-                          </h1>
-                          <h6>{title}</h6>
-                        </div>
-                      </div>
-                    </div>
+                      title={title}
+                      theme={theme}
+                    />
                   ))}
                 />
               )}
