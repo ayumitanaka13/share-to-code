@@ -1,33 +1,14 @@
 import React from "react";
 
-const Select = ({
-  name,
-  value,
-  type,
-  placeholder,
-  onChange,
-  required,
-  className,
-  defaultValue,
-}) => {
+const Select = ({ name, value, onChange, required, className, valueTheme }) => {
   return (
-    // <input
-    //   name={name}
-    //   value={value}
-    //   type={type}
-    //   placeholder={placeholder}
-    // onChange={onChange}
-    // required={required}
-    //   className={className}
-    // />
-
     <select
       id="theme"
       name={name}
+      value={valueTheme}
       onChange={onChange}
       required={required}
       className={className}
-      defaultValue={defaultValue}
     >
       <option value="" disabled selected>
         *Theme

@@ -8,7 +8,7 @@ import ReactJs from "../../images/ReactJs.png";
 import Node from "../../images/Node.png";
 import Other from "../../images/Other.png";
 
-const PostHeader = ({ theme, title }) => {
+const PostHeader = ({ onClick, theme, title }) => {
   let src;
   let fa;
 
@@ -44,7 +44,7 @@ const PostHeader = ({ theme, title }) => {
   }
 
   return (
-    <div className="relative -mt-8">
+    <div className="relative -mt-8" onClick={onClick}>
       <img src={src} alt={title} className="w-full RoundShadow-lg" />
       <div className="h-full w-full FlexCenter absolute top-0">
         <div className="text-white text-center px-2">

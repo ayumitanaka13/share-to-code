@@ -102,7 +102,7 @@ const Form = ({ currentId, setCurrentId }) => {
             {user?.result ? (
               <form onSubmit={handleSubmit} className="text-gray-500">
                 <h4 className="text-indigo-800">
-                  {currentId ? "Editing" : "Creating"} Post
+                  {currentId ? "Edit" : "Create"} Post
                 </h4>
                 <div className="mt-2">
                   <Input
@@ -127,7 +127,7 @@ const Form = ({ currentId, setCurrentId }) => {
                   />
                   <Select
                     name="theme"
-                    defaultValue={postData.theme}
+                    valueTheme={postData.theme}
                     onChange={(e) =>
                       setPostData({ ...postData, theme: e.target.value })
                     }
@@ -135,21 +135,10 @@ const Form = ({ currentId, setCurrentId }) => {
                     className={
                       postData.theme ? "text-gray-500" : "text-gray-300"
                     }
-                    // className={!postData.theme && "text-gray-300"}
                   />
-                  {/* <Input
-                    name="theme"
-                    value={postData.theme}
-                    onChange={(e) =>
-                      setPostData({ ...postData, theme: e.target.value })
-                    }
-                    type="text"
-                    placeholder="*Theme (Language or Framework)"
-                    required={true}
-                  /> */}
                   <Input
                     name="materials.first"
-                    defaultValue={postData.materials.first}
+                    value={postData.materials.first}
                     onChange={(e) =>
                       setPostData({
                         ...postData,
@@ -165,7 +154,7 @@ const Form = ({ currentId, setCurrentId }) => {
                   {addSecond && (
                     <Input
                       name="materials.second"
-                      defaultValue={postData.materials.second}
+                      value={postData.materials.second}
                       onChange={(e) =>
                         setPostData({
                           ...postData,
@@ -182,7 +171,7 @@ const Form = ({ currentId, setCurrentId }) => {
                   {addThird && (
                     <Input
                       name="materials.third"
-                      defaultValue={postData.materials.third}
+                      value={postData.materials.third}
                       onChange={(e) =>
                         setPostData({
                           ...postData,
@@ -201,7 +190,7 @@ const Form = ({ currentId, setCurrentId }) => {
                       <Button
                         type="button"
                         onClick={handleAddThird}
-                        button="Add More Link"
+                        button={`${currentId ? "Edit" : "Add"} More Link`}
                         className="bg-gray-100 mt-4"
                       />
                     )
@@ -209,7 +198,7 @@ const Form = ({ currentId, setCurrentId }) => {
                     <Button
                       type="button"
                       onClick={handleAddSecond}
-                      button="Add More Link"
+                      button={`${currentId ? "Edit" : "Add"} More Link`}
                       className="bg-gray-100 mt-4"
                     />
                   )}

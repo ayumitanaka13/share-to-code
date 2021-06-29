@@ -8,7 +8,7 @@ import ReactJs from "../../images/ReactJs.png";
 import Node from "../../images/Node.png";
 import Other from "../../images/Other.png";
 
-const RecommendedPost = ({ key, onClick, title, theme }) => {
+const RecommendedPost = ({ onClick, title, theme }) => {
   let src;
   let fa;
 
@@ -45,9 +45,8 @@ const RecommendedPost = ({ key, onClick, title, theme }) => {
 
   return (
     <div
-      key={key}
       onClick={onClick}
-      className="h-24 sm:h-32 w-full relative my-2"
+      className="h-24 sm:h-32 w-full relative Hover cursor-pointer my-4"
     >
       <img
         src={src}

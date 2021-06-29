@@ -33,52 +33,54 @@ const PostDetails = () => {
   //     }
   //   }, [post]);
 
+  // console.log(post._id);
+
   if (!post) return null;
-
   const openPost = (_id) => history.push(`/posts/${_id}`);
-
   const recommendedPosts = posts.filter(({ _id }) => _id !== post._id);
 
   return (
     <Container
       className="mt-16"
       content={
-        // isLoading ? (
-        //   <Loading />
-        // ) : (
-        <>
-          <div className="w-full md:w-3/4 FlexJustify">
-            <Card>
-              <PostHeader theme={post.theme} title={<h2>{post.title}</h2>} />
-              <PostDetailsBody
-                message={post.message}
-                youtube={post.materials.first}
-              />
-              {!!recommendedPosts.length && (
-                <PostDetailsFooter
-                  content={recommendedPosts.map(({ _id, title, theme }) => (
-                    <RecommendedPost
-                      key={_id}
-                      onClick={() => openPost(_id)}
-                      title={title}
-                      theme={theme}
-                    />
-                  ))}
+        isLoading ? (
+          <Loading />
+        ) : (
+          <>
+            <div className="w-full md:w-3/4 FlexJustify">
+              <Card>
+                <PostHeader theme={post.theme} title={<h2>{post.title}</h2>} />
+                <PostDetailsBody
+                  message={post.message}
+                  youtube={post.materials.first}
+                  youtube2={post.materials.second}
+                  youtube3={post.materials.third}
                 />
-              )}
-            </Card>
-          </div>
-
-          <div className="h-36 sm:h-40 md:h-48 xl:h-40 w-full md:w-1/4 FlexJustify">
-            <PostDetailsSide
-              username={post.username}
-              createdAt={moment(post.createdAt).fromNow()}
-              theme={post.theme}
-              likes={post.likes.length}
-            />
-          </div>
-        </>
-        // )
+                {!!recommendedPosts.length && (
+                  <PostDetailsFooter
+                    content={recommendedPosts.map(({ _id, title, theme }) => (
+                      <RecommendedPost
+                        key={_id}
+                        onClick={() => openPost(_id)}
+                        title={title}
+                        theme={theme}
+                      />
+                    ))}
+                  />
+                )}
+              </Card>
+            </div>
+            <div className="h-36 sm:h-40 md:h-48 xl:h-40 w-full md:w-1/4 FlexJustify">
+              <PostDetailsSide
+                id={post._id}
+                username={post.username}
+                createdAt={moment(post.createdAt).fromNow()}
+                theme={post.theme}
+                likes={post.likes.length}
+              />
+            </div>
+          </>
+        )
       }
     />
   );

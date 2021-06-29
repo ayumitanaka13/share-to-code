@@ -7,10 +7,10 @@ import moment from "moment";
 import { deletePost, likePost } from "../../actions/posts";
 
 import Card from "../Card/Card";
-import Button from "../UI/Button";
 import PostHeader from "./PostHeader";
 import PostBody from "./PostBody";
 import PostFooter from "./PostFooter";
+import Button from "../UI/Button";
 import Heart from "../UI/Heart";
 
 const Post = ({ post, setCurrentId }) => {
@@ -19,20 +19,13 @@ const Post = ({ post, setCurrentId }) => {
   const user = JSON.parse(localStorage.getItem("profile"));
 
   const Likes = () => {
-    if (post?.likes?.length > 0) {
-      return post.likes.find(
-        (like) => like === (user?.result?.googleId || user?.result?._id)
-      ) ? (
-        <>
-          {post.likes.length} <Heart />
-        </>
-      ) : (
-        <>
-          {post.likes.length} <Heart />
-        </>
-      );
-    }
-    return <Heart />;
+    return post?.likes?.length > 0 ? (
+      <>
+        <Heart /> {post.likes.length}
+      </>
+    ) : (
+      <Heart />
+    );
   };
 
   const openPost = (e) => {
@@ -40,12 +33,8 @@ const Post = ({ post, setCurrentId }) => {
   };
 
   return (
-    <Card>
-      <PostHeader
-        theme={post.theme}
-        // src={thumbnail}
-        title={<h4>{post.title}</h4>}
-      />
+    <Card className="Hover cursor-pointer">
+      <PostHeader theme={post.theme} title={<h4>{post.title}</h4>} onClick={openPost} />
       <PostBody
         message={post.message.split("").splice(0, 45).join("")}
         username={post.username}
@@ -54,17 +43,14 @@ const Post = ({ post, setCurrentId }) => {
       <PostFooter
         content={
           <>
-            {/* <div className="flex justify-between"> */}
             <Button
               disabled={!user?.result}
               onClick={() => dispatch(likePost(post._id))}
               button={<Likes />}
             />
             <Button onClick={openPost} button="More" />
-            {/* </div> */}
             {(user?.result?.googleId === post?.creator ||
               user?.result?._id === post?.creator) && (
-              // <div className="flex justify-between">
               <>
                 <Button
                   onClick={() => dispatch(deletePost(post._id))}
@@ -80,7 +66,6 @@ const Post = ({ post, setCurrentId }) => {
                   className="bg-gray-100"
                 />
               </>
-              // </div>
             )}
           </>
         }

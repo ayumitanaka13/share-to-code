@@ -6,6 +6,7 @@ import decode from "jwt-decode";
 import { LOGOUT } from "../../constants/actionTypes";
 
 import Button from "./Button";
+import Logo from "../../images/logo.png";
 
 const NavBar = () => {
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
@@ -36,7 +37,10 @@ const NavBar = () => {
     <div className="h-16 min-w-full FlexAlign justify-between fixed top-0 left-0 backdrop-filter backdrop-blur bg-gray-100 bg-opacity-80 shadow-sm z-50 px-8 lg:px-16">
       <ul className="FlexAlign">
         <li className="text-base sm:text-lg xl:text-xl 2xl:text-2xl Hover">
-          <Link to="/">Share to Code</Link>
+          <Link to="/" className="FlexAlign">
+            <img src={Logo} alt="" className="h-8 w-8 mr-2" />
+            Share to Code
+          </Link>
         </li>
       </ul>
       <ul className="FlexAlign">
