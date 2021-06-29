@@ -27,7 +27,7 @@ const Posts = ({ setCurrentId }) => {
             {posts?.map((post, i) => (
               <div
                 key={i}
-                className="w-full FlexJustify md:w-1/2 2xl:w-1/3 my-1 sm:my-0 py-4"
+                className="w-full FlexJustify md:w-1/2 xl:w-1/3 my-1 sm:my-0 py-4"
               >
                 <Post post={post} setCurrentId={setCurrentId} />
               </div>

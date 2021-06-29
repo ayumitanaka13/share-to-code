@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 import moment from "moment";
 
 import { deletePost, likePost } from "../../actions/posts";
-import thumbnail from "../../images/thumbnail.png";
 
 import Card from "../Card/Card";
 import Button from "../UI/Button";

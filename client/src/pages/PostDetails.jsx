@@ -49,10 +49,7 @@ const PostDetails = () => {
         <>
           <div className="w-full md:w-3/4 FlexJustify">
             <Card>
-              <PostHeader
-                theme={post.theme}
-                title={<h2 className="text-2xl">{post.title}</h2>}
-              />
+              <PostHeader theme={post.theme} title={<h2>{post.title}</h2>} />
               <PostDetailsBody
                 message={post.message}
                 youtube={post.materials.first}

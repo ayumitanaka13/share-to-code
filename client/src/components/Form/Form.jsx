@@ -61,7 +61,6 @@ const Form = ({ currentId, setCurrentId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     if (currentId === 0) {
       dispatch(
         createPost(
@@ -128,10 +127,15 @@ const Form = ({ currentId, setCurrentId }) => {
                   />
                   <Select
                     name="theme"
+                    defaultValue={postData.theme}
                     onChange={(e) =>
                       setPostData({ ...postData, theme: e.target.value })
                     }
                     required={true}
+                    className={
+                      postData.theme ? "text-gray-500" : "text-gray-300"
+                    }
+                    // className={!postData.theme && "text-gray-300"}
                   />
                   {/* <Input
                     name="theme"
@@ -144,7 +148,7 @@ const Form = ({ currentId, setCurrentId }) => {
                     required={true}
                   /> */}
                   <Input
-                    name="matarials.first"
+                    name="materials.first"
                     defaultValue={postData.materials.first}
                     onChange={(e) =>
                       setPostData({
@@ -160,12 +164,12 @@ const Form = ({ currentId, setCurrentId }) => {
                   />
                   {addSecond && (
                     <Input
-                      name="matarials.second"
+                      name="materials.second"
                       defaultValue={postData.materials.second}
                       onChange={(e) =>
                         setPostData({
                           ...postData,
-                          matarials: {
+                          materials: {
                             ...postData.materials,
                             second: e.target.value,
                           },
@@ -177,12 +181,12 @@ const Form = ({ currentId, setCurrentId }) => {
                   )}
                   {addThird && (
                     <Input
-                      name="matarials.third"
+                      name="materials.third"
                       defaultValue={postData.materials.third}
                       onChange={(e) =>
                         setPostData({
                           ...postData,
-                          matarials: {
+                          materials: {
                             ...postData.materials,
                             third: e.target.value,
                           },

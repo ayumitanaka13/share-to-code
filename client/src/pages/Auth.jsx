@@ -10,7 +10,7 @@ import Container from "../components/UI/Container";
 import Input from "../components/UI/Input";
 import Button from "../components/UI/Button";
 import Card from "../components/Card/Card";
-import Top3 from "../images/top-3.png";
+import Human3 from "../images/human-3.png";
 
 const initialState = {
   username: "",
@@ -145,7 +145,7 @@ const Auth = () => {
               </div>
             </form>
           </Card>
-          <img src={Top3} alt="" className="ImgSize ml-0 md:ml-4" />
+          <img src={Human3} alt="" className="ImgSize ml-0 md:ml-4" />
         </div>
       }
     />

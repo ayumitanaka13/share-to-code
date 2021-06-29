@@ -8,6 +8,7 @@ const Select = ({
   onChange,
   required,
   className,
+  defaultValue,
 }) => {
   return (
     // <input
@@ -19,7 +20,15 @@ const Select = ({
     // required={required}
     //   className={className}
     // />
-    <select id="theme" name={name} onChange={onChange} required={required}>
+
+    <select
+      id="theme"
+      name={name}
+      onChange={onChange}
+      required={required}
+      className={className}
+      defaultValue={defaultValue}
+    >
       <option value="" disabled selected>
         *Theme
       </option>
