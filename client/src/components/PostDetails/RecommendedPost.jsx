@@ -51,7 +51,7 @@ const RecommendedPost = ({ onClick, title, theme }) => {
       <img
         src={src}
         alt={title}
-        className="h-full w-full object-cover RoundShadow-lg"
+        className="h-full w-full object-cover RoundShadow"
       />
       <div className="h-full w-full FlexCenter absolute top-0">
         <div className="text-white text-center">

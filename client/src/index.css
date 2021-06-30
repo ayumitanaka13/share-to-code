@@ -68,9 +68,6 @@
   .RoundShadow-lg {
     @apply rounded-lg shadow-lg;
   }
-  .RoundShadow-md {
-    @apply rounded-md shadow-md;
-  }
   .RoundShadow {
     @apply rounded shadow;
   }
@@ -79,9 +76,5 @@
   }
   .ImgSize {
     @apply h-64 sm:h-72 2xl:h-96 w-64 sm:w-72 2xl:w-96;
-  }
-
-  .Border {
-    @apply border-gray-300 border-2;
   }
 }
