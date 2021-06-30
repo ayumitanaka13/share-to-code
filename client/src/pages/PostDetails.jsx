@@ -23,7 +23,7 @@ const PostDetails = () => {
 
   useEffect(() => {
     dispatch(getPost(id));
-  }, [posts]);
+  }, [posts, id]);
 
   if (!post) return null;
   const openPost = (_id) => history.push(`/posts/${_id}`);

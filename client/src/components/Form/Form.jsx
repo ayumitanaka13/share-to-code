@@ -211,17 +211,22 @@ const Form = ({ currentId, setCurrentId }) => {
             ) : (
               <div className="text-center py-4 px-4 2xl:px-8">
                 <h1>Let's share your roadmaps to the world!</h1>
-                <p className="mt-4">
+                <p className="mt-4 2xl:mt-6">
                   Now, anyone can be a developer completely free of cost because
                   YouTube will be a great teacher! Don't you wanna share helpful
                   videos for absolute learners?
                 </p>
                 <Link to="/auth">
-                  <Button button="Sign In Right Now" className="mt-4" />
+                  <Button
+                    button="Sign In Right Now"
+                    className="mt-4 2xl:mt-6"
+                  />
                 </Link>
-                <p className="mt-2">
-                  <small>*You can post and fav roadmaps after sign in.</small>
-                </p>
+                {/* <p className="mt-2 2xl:mt-4">
+                  <small className="text-orange">
+                    *You can post and fav roadmaps after sign in.
+                  </small>
+                </p> */}
               </div>
             )}
           </Card>

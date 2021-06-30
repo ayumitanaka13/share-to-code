@@ -13,8 +13,18 @@ const PostDetailsSide = ({ id, username, createdAt, theme, likesLength }) => {
   const history = useHistory();
   const user = JSON.parse(localStorage.getItem("profile"));
 
+  // const searchPost = () => {
+  //   if (theme) {
+  //     dispatch(getPostsBySearch({ search: theme }));
+  //     history.push(`/posts/search?searchQuery=${theme || "none"}`);
+  //   } else {
+  //     history.push("/");
+  //   }
+  // };
+
   const searchPost = () => {
     dispatch(getPostsBySearch({ search: theme }));
+    // dispatch(getPostsBySearch({ theme: theme }));
     history.push(`/posts/search?searchQuery=${theme || "none"}`);
   };
 
