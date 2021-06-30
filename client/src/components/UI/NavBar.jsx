@@ -38,7 +38,7 @@ const NavBar = () => {
       <ul className="FlexAlign">
         <li className="text-base sm:text-lg xl:text-xl 2xl:text-2xl Hover">
           <Link to="/" className="FlexAlign">
-            <img src={Logo} alt="" className="h-8 w-8 mr-2" />
+            <img src={Logo} alt="logo" className="h-8 w-8 mr-2" />
             Share to Code
           </Link>
         </li>
@@ -47,21 +47,20 @@ const NavBar = () => {
         {user?.result ? (
           <>
             <li className="hidden sm:flex items-center mr-4">
-              {user.result.imageUrl && (
+              {user.result.imageUrl ? (
                 <img
                   src={user?.result.imageUrl}
                   alt={user?.result.name}
-                  className="w-8 rounded-full mr-2"
+                  className="h-8 w-8 rounded-full mr-2"
                 />
+              ) : (
+                <div className="h-8 w-8 FlexCenter bg-orange bg-opacity-20 text-orange rounded-full mr-2">
+                  <h6>{user.result.username.charAt(0)}</h6>
+                </div>
               )}
               Welcome, {user.result.username}
               {user.result.givenName}
             </li>
-            {/* <li>
-              <Link to="#form">
-                <Button button="Post" className="mr-2 sm:mr-4" />
-              </Link>
-            </li> */}
             <li>
               <Button button="Log Out" onClick={logout} />
             </li>

@@ -12,7 +12,6 @@ import PostBody from "./PostBody";
 import PostFooter from "./PostFooter";
 import Button from "../UI/Button";
 import LikesLength from "./LikesLength";
-import Heart from "../UI/Heart";
 
 const Post = ({ post, setCurrentId }) => {
   const dispatch = useDispatch();
@@ -31,7 +30,7 @@ const Post = ({ post, setCurrentId }) => {
         onClick={openPost}
       />
       <PostBody
-        message={post.message.split("").splice(0, 45).join("")}
+        message={post.message.split("").splice(0, 60).join("")}
         username={post.username}
         moment={moment(post.createdAt).fromNow()}
       />
@@ -42,7 +41,7 @@ const Post = ({ post, setCurrentId }) => {
               disabled={!user?.result}
               onClick={() => dispatch(likePost(post._id))}
               button={<LikesLength likesLength={post.likes.length} />}
-              className={!user?.result && "opacity-50 cursor-not-allowed"}
+              className={!user?.result ? "opacity-50 cursor-not-allowed" : null}
             />
             <Button onClick={openPost} button="More" />
             {(user?.result?.googleId === post?.creator ||

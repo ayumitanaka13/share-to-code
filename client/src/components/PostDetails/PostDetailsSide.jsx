@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
@@ -18,10 +18,6 @@ const PostDetailsSide = ({ id, username, createdAt, theme, likesLength }) => {
     history.push(`/posts/search?searchQuery=${theme || "none"}`);
   };
 
-  // useEffect(() => {
-  //   dispatch(likePost());
-  // }, []);
-
   return (
     <Card>
       <div>
@@ -36,7 +32,6 @@ const PostDetailsSide = ({ id, username, createdAt, theme, likesLength }) => {
           disabled={!user?.result}
           onClick={() => dispatch(likePost(id))}
           button={<LikesLength likesLength={likesLength} />}
-          // className="mt-2 xl:mt-0 ml-0 xl:ml-2"
           className={`${
             !user?.result && "opacity-50 cursor-not-allowed"
           } mt-2 xl:mt-0 ml-0 xl:ml-2`}

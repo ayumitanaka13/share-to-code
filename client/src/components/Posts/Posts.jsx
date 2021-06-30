@@ -47,10 +47,10 @@ const Posts = ({ setCurrentId }) => {
             ))}
             {more && <ShowMore />}
             {posts.length > 6 && (
-              <div className="w-full FlexJustify mt-4 border">
+              <div className="w-full FlexJustify mt-4">
                 <Button
                   type="button"
-                  button={`See ${more ? "Less" : "More"}`}
+                  button={`Show ${more ? "Less" : "More"}`}
                   onClick={() => setMore(!more)}
                 />
               </div>
