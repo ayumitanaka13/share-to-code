@@ -5,10 +5,10 @@ import { useHistory } from "react-router-dom";
 import { getPostsBySearch, likePost } from "../../actions/posts";
 
 import Card from "../Card/Card";
-import Heart from "../UI/Heart";
 import Button from "../UI/Button";
+import LikesLength from "../Post/LikesLength";
 
-const PostDetailsSide = ({ id, username, createdAt, theme, likes }) => {
+const PostDetailsSide = ({ id, username, createdAt, theme, likesLength }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const user = JSON.parse(localStorage.getItem("profile"));
@@ -16,18 +16,6 @@ const PostDetailsSide = ({ id, username, createdAt, theme, likes }) => {
   const searchPost = () => {
     dispatch(getPostsBySearch({ search: theme }));
     history.push(`/posts/search?searchQuery=${theme || "none"}`);
-  };
-
-  // console.log("user", user);
-
-  const Likes = () => {
-    return likes > 0 ? (
-      <>
-        <Heart /> {likes}
-      </>
-    ) : (
-      <Heart />
-    );
   };
 
   // useEffect(() => {
@@ -47,8 +35,11 @@ const PostDetailsSide = ({ id, username, createdAt, theme, likes }) => {
         <Button
           disabled={!user?.result}
           onClick={() => dispatch(likePost(id))}
-          button={<Likes />}
-          className="mt-2 xl:mt-0 ml-0 xl:ml-2"
+          button={<LikesLength likesLength={likesLength} />}
+          // className="mt-2 xl:mt-0 ml-0 xl:ml-2"
+          className={`${
+            !user?.result && "opacity-50 cursor-not-allowed"
+          } mt-2 xl:mt-0 ml-0 xl:ml-2`}
         />
       </div>
     </Card>

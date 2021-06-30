@@ -209,8 +209,11 @@ const Form = ({ currentId, setCurrentId }) => {
                 </div>
               </form>
             ) : (
-              <div className="text-center m-2">
+              <div className="text-center py-4 px-8">
                 <h1>Let's share your roadmaps to the world!</h1>
+                <h6 className="mt-2 xl:mt-4">
+                  You can post and fav roadmaps after sign in.
+                </h6>
                 <Link to="/auth">
                   <Button button="Sign In Right Now" className="mt-4 xl:mt-6" />
                 </Link>

@@ -23,17 +23,7 @@ const PostDetails = () => {
 
   useEffect(() => {
     dispatch(getPost(id));
-  }, [id]);
-
-  //   useEffect(() => {
-  //     if (post) {
-  //       dispatch(
-  //         getPostsBySearch({ search: "none", tags: post?.tags.join(",") })
-  //       );
-  //     }
-  //   }, [post]);
-
-  // console.log(post._id);
+  }, [posts]);
 
   if (!post) return null;
   const openPost = (_id) => history.push(`/posts/${_id}`);
@@ -76,7 +66,7 @@ const PostDetails = () => {
                 username={post.username}
                 createdAt={moment(post.createdAt).fromNow()}
                 theme={post.theme}
-                likes={post.likes.length}
+                likesLength={post.likes.length}
               />
             </div>
           </>

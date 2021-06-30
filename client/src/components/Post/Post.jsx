@@ -11,6 +11,7 @@ import PostHeader from "./PostHeader";
 import PostBody from "./PostBody";
 import PostFooter from "./PostFooter";
 import Button from "../UI/Button";
+import LikesLength from "./LikesLength";
 import Heart from "../UI/Heart";
 
 const Post = ({ post, setCurrentId }) => {
@@ -18,23 +19,17 @@ const Post = ({ post, setCurrentId }) => {
   const history = useHistory();
   const user = JSON.parse(localStorage.getItem("profile"));
 
-  const Likes = () => {
-    return post?.likes?.length > 0 ? (
-      <>
-        <Heart /> {post.likes.length}
-      </>
-    ) : (
-      <Heart />
-    );
-  };
-
   const openPost = (e) => {
     history.push(`/posts/${post._id}`);
   };
 
   return (
-    <Card className="Hover cursor-pointer">
-      <PostHeader theme={post.theme} title={<h4>{post.title}</h4>} onClick={openPost} />
+    <Card className="Hover">
+      <PostHeader
+        theme={post.theme}
+        title={<h4>{post.title}</h4>}
+        onClick={openPost}
+      />
       <PostBody
         message={post.message.split("").splice(0, 45).join("")}
         username={post.username}
@@ -46,7 +41,8 @@ const Post = ({ post, setCurrentId }) => {
             <Button
               disabled={!user?.result}
               onClick={() => dispatch(likePost(post._id))}
-              button={<Likes />}
+              button={<LikesLength likesLength={post.likes.length} />}
+              className={!user?.result && "opacity-50 cursor-not-allowed"}
             />
             <Button onClick={openPost} button="More" />
             {(user?.result?.googleId === post?.creator ||

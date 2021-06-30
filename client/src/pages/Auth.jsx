@@ -21,7 +21,6 @@ const initialState = {
 
 const Auth = () => {
   const [form, setForm] = useState(initialState);
-  //   const [formData, setFormData] = useState(initialState)
   const [isSignup, setIsSignup] = useState(false);
   const dispatch = useDispatch();
   const history = useHistory();
