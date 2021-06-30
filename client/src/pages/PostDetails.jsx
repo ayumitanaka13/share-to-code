@@ -24,7 +24,7 @@ const PostDetails = () => {
   useEffect(() => {
     dispatch(getPost(id));
   }, [posts, id]);
-
+  
   if (!post) return null;
   const openPost = (_id) => history.push(`/posts/${_id}`);
   const recommendedPosts = posts.filter(({ _id }) => _id !== post._id);

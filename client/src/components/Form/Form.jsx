@@ -211,10 +211,10 @@ const Form = ({ currentId, setCurrentId }) => {
             ) : (
               <div className="text-center py-4 px-4 2xl:px-8">
                 <h1>Let's share your roadmaps to the world!</h1>
-                <p className="mt-4 2xl:mt-6">
+                <p className="text-gray-400 mt-4 2xl:mt-6">
                   Now, anyone can be a developer completely free of cost because
-                  YouTube will be a great teacher! Don't you wanna share helpful
-                  videos for absolute learners?
+                  YouTube will be a great teacher! <br />
+                  Don't you wanna share helpful videos for absolute learners?
                 </p>
                 <Link to="/auth">
                   <Button
