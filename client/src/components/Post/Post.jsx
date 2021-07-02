@@ -40,7 +40,7 @@ const Post = ({ post, setCurrentId }) => {
             <Button
               disabled={!user?.result}
               onClick={() => dispatch(likePost(post._id))}
-              button={<LikesLength likesLength={post.likes.length} />}
+              button={<LikesLength likesLength={post.likes?.length} />}
               className={!user?.result ? "opacity-50 cursor-not-allowed" : null}
             />
             <Button onClick={openPost} button="More" />

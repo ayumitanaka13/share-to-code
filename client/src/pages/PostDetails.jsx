@@ -3,7 +3,7 @@ import { useHistory, useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 
-import { getPost } from "../actions/posts";
+import { getPost, getPosts } from "../actions/posts";
 
 import Container from "../components/UI/Container";
 import Card from "../components/Card/Card";
@@ -24,7 +24,11 @@ const PostDetails = () => {
   useEffect(() => {
     dispatch(getPost(id));
   }, [posts, id]);
-  
+
+  useEffect(() => {
+    dispatch(getPosts());
+  }, []);
+
   if (!post) return null;
   const openPost = (_id) => history.push(`/posts/${_id}`);
   const recommendedPosts = posts.filter(({ _id }) => _id !== post._id);

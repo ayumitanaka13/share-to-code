@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { getPosts } from "../../actions/posts";
 
 import Container from "../UI/Container";
@@ -11,9 +12,12 @@ const Posts = ({ setCurrentId }) => {
   const { posts, isLoading } = useSelector((state) => state.posts);
   const [more, setMore] = useState(false);
   const dispatch = useDispatch();
+  const { search } = useLocation();
 
   useEffect(() => {
-    dispatch(getPosts());
+    if (!search) {
+      dispatch(getPosts());
+    }
   }, []);
 
   const ShowMore = () => {
