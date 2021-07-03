@@ -1,4 +1,4 @@
-# Journaly
+# Share to Code
 
 ## About
 
