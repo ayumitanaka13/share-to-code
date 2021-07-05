@@ -31,7 +31,7 @@ Read Post Page
 <img width="1440" alt="work-3c" src="https://user-images.githubusercontent.com/55824449/124366701-6fe31680-dc06-11eb-8fce-5a2136b2e72b.png">
 
 
-## Technologies Used
+## Technologies
 
 - Node.js
 - Express
